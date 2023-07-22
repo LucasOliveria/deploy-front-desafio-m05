@@ -16,7 +16,9 @@ function MainRouter() {
       <Route path="/signup" element={<SignUp />} />
 
       <Route element={<ProtectedRouter redirectTo={"/"} />}>
-        <Route path="/home" element={<Home />} />
+        <Route path="/dashboard/home" element={<Home />} />
+        <Route path="/dashboard/clientes" element={<Home />} />
+        <Route path="/dashboard/cobrancas" element={<Home />} />
       </Route>
     </Routes>
   )

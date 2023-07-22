@@ -3,31 +3,32 @@ import './style.css';
 import FormStepOne from '../../components/FormStepOne';
 import FormStepTwo from '../../components/FormStepTwo';
 import SuccessMessage from '../../components/SuccessMessage';
+import StepperCustom from '../../components/StepperCustom';
 
 function SignUp() {
-  const [currentForm, setCurrentForm] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
 
   return (
     <main className='container-signup'>
       <div className="container-steps">
-
+        <StepperCustom currentStep={currentStep} setCurrentStep={setCurrentStep} />
       </div>
       <div className='container-register'>
         <div className="container-forms">
           {
-            currentForm === 1
+            currentStep === 0
             &&
-            <FormStepOne setCurrentForm={setCurrentForm} />
+            <FormStepOne setCurrentStep={setCurrentStep} />
           }
           {
-            currentForm === 2
+            currentStep === 1
             &&
-            <FormStepTwo setCurrentForm={setCurrentForm} />
+            <FormStepTwo setCurrentStep={setCurrentStep} />
           }
           {
-            currentForm === 3
+            currentStep === 2
             &&
-            <SuccessMessage setCurrentForm={setCurrentForm} />
+            <SuccessMessage setCurrentStep={setCurrentStep} />
           }
         </div>
       </div>

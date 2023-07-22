@@ -1,18 +1,31 @@
-.container {
+.signin-container {
   display: flex;
 }
 
-.container-aside h1 {
-  position: absolute;
+.signin-container-aside {
+  position: relative;
+  background-image: url(../../assets/unsplash_QeVmJxZOv3k.svg);
+  background-size: cover;
+  /* min-height: 895px;
+  min-width: 500px; */
+  /* height: 895px; */
+  width: 500px;
+  height: 100vh;
+}
+
+.signin-container-aside h1,
+.signin-form-title {
   font-family: 'Montserrat', sans-serif;
-  width: 388px;
-  height: 93px;
-  top: 158px;
-  left: 56px;
+}
+
+.signin-container-aside h1 {
+  position: absolute;
+  top: 15vh;
+  left: 5vw;
   color: var(--dark-green-text-color);
 }
 
-.container-main {
+.signin-container-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,13 +34,12 @@
   background-color: var(--light-gray-bg-color);
 }
 
-form {
+.signin-form {
   display: flex;
   flex-direction: column;
 }
 
-form h1 {
-  font-family: Montserrat;
+.signin-form-title {
   font-size: 24px;
   font-weight: 700;
   line-height: 31px;
@@ -35,19 +47,27 @@ form h1 {
   text-align: center;
   margin-bottom: 15px;
   color: var(--dark-gray-bg-color);
-
 }
 
-.container-email,
-.container-password {
+.signin-container-email,
+.signin-container-password {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
 }
 
-.container-email label,
-.container-password label {
-  font-family: Nunito;
+.signin-container-email label,
+.signin-container-password label,
+.signin-container-password a,
+.signin-btn-submit,
+.signin-form p,
+.signin-form p span a {
+  font-family: 'Nunito';
+}
+
+.signin-container-email label,
+.signin-container-password label {
+
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
@@ -56,8 +76,8 @@ form h1 {
   color: #344054;
 }
 
-.container-email input,
-.container-password input {
+.signin-container-email input,
+.signin-container-password input {
   width: 344px;
   height: 44px;
   padding: 10px 14px 10px 14px;
@@ -67,13 +87,13 @@ form h1 {
   color: #667085;
 }
 
-.container-password div {
+.signin-container-password div {
   display: flex;
   justify-content: space-between;
 }
 
-.container-password a {
-  font-family: Nunito;
+.signin-container-password a {
+
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
@@ -83,7 +103,7 @@ form h1 {
 
 }
 
-.btn-submit {
+.signin-btn-submit {
   align-self: center;
   margin: 15px;
   width: 160px;
@@ -95,17 +115,18 @@ form h1 {
   border: none;
   gap: 4px;
   background-color: var(--pink-color);
-  font-family: Nunito;
+
   font-size: 18px;
   font-weight: 400;
   color: #F8F8F9;
+  cursor: pointer;
 }
 
-form p {
+.signin-form p {
   display: flex;
   justify-content: center;
   gap: 5px;
-  font-family: Nunito;
+
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
@@ -114,8 +135,8 @@ form p {
   color: #3F3F55;
 }
 
-form p span a {
-  font-family: Nunito;
+.signin-form p span a {
+
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;

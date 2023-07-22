@@ -1,0 +1,55 @@
+.content-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.step-box {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 32px;
+}
+
+.step-box:first-of-type {
+  cursor: pointer;
+}
+
+.step-box h3 {
+  font-family: Montserrat;
+  font-weight: 700;
+  color: var(--green-steps);
+}
+
+.step-box h3,
+.instructions p {
+  font-size: 18px;
+  font-style: normal;
+  line-height: 130%;
+}
+
+.instructions {
+  display: flex;
+  gap: 40px;
+}
+
+.step-line {
+  border-left: 3px solid var(--green-steps);
+}
+
+.aux-line {
+  border-left: 3px solid var(--gray-container-steps);
+}
+
+.step-line,
+.aux-line {
+  height: 40px;
+  margin: 4px 0;
+  margin-left: 15px;
+}
+
+.instructions p {
+  font-family: Nunito;
+  font-weight: 600;
+  color: var(--cinza-n2);
+}

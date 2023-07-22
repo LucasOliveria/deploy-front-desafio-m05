@@ -1,0 +1,25 @@
+.Home {
+  height: 100vh;
+  display: flex;
+  flex-grow: 1;
+
+  font-family: 'Montserrat';
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+
+.Home .main-content{
+  flex-grow: 1;
+}
+
+.Home .main-content .cards-wrapper{
+  flex-grow: 1;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Home .main-content .cards-wrapper .cards{
+  display: flex;
+  justify-content: space-between;
+}

@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import StepsBottom from "../StepsBottom"
 import './style.css';
 
-function FormStepOne({ setCurrentForm }) {
+function FormStepOne({ setCurrentStep }) {
   const navigate = useNavigate();
 
   function nextForm() {
-    setCurrentForm(2);
+    setCurrentStep(1);
   }
 
   return (
@@ -22,7 +22,7 @@ function FormStepOne({ setCurrentForm }) {
         Já possui uma conta? Faça seu <span onClick={() => navigate("/")}>Login</span>
       </p>
 
-      <StepsBottom stepLine={1} />
+      <StepsBottom stepLine={0} />
     </form>
   )
 }

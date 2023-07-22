@@ -14,7 +14,7 @@ function SuccessMessage() {
       </div>
       <button onClick={() => navigate("/")}>Ir para Login</button>
 
-      <StepsBottom stepLine={3} />
+      <StepsBottom stepLine={2} />
     </div>
   )
 }

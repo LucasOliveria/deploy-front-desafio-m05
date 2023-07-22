@@ -4,8 +4,10 @@
 }
 
 .container-steps {
+  display: flex;
   width: 500px;
   height: 100%;
+  padding: 178px 0 0 49px;
   background-color: var(--gray-container-steps);
 }
 

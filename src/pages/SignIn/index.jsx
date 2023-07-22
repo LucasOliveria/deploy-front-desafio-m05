@@ -1,11 +1,11 @@
 // import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './style.css';
 import { toast } from "react-toastify";
-import imgLogin from '../../assets/unsplash_QeVmJxZOv3k.svg';
 import { useState } from 'react';
 
 function SignIn() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -21,28 +21,30 @@ function SignIn() {
       return toast.error('E-mail e senha são obrigatórios!')
     }
     // try {} catch (error) {}
+    navigate('/signup');
   }
   return (
-    <div className='container'>
-      <aside className='container-aside'>
-        <img src={imgLogin} alt="Imagem Login" />
-        <h1>Gerencie todos os pagamentos da sua empresa em um só lugar.</h1>
+    <div className='signin-container'>
+      <aside className='signin-container-aside'>
+        <div>
+          <h1>Gerencie todos os pagamentos da sua empresa em um só lugar.</h1>
+        </div>
       </aside>
-      <main className='container-main'>
-        <form onSubmit={handleSubmit}>
-          <h1>Faça seu login!</h1>
-          <div className='container-email'>
+      <main className='signin-container-main'>
+        <form onSubmit={handleSubmit} className='signin-form'>
+          <h1 className='signin-form-title'>Faça seu login!</h1>
+          <div className='signin-container-email'>
             <label htmlFor='email'>E-mail</label>
             <input type="email" name='email' id='email' placeholder='Digite seu e-mail' value={form.email} onChange={(e) => handleChangeForm(e)} />
           </div>
-          <div className='container-password'>
+          <div className='signin-container-password'>
             <div>
               <label htmlFor="password">Senha</label>
               <Link to="#">Esqueceu a senha?</Link>
             </div>
             <input type="password" name='password' id='password' placeholder='Digite sua senha' value={form.password} onChange={(e) => handleChangeForm(e)} />
           </div>
-          <button className='btn-submit'>Entrar</button>
+          <button className='signin-btn-submit'>Entrar</button>
           <p>Ainda não possui uma conta?<span><Link to="/signup">Cadastre-se</Link></span></p>
         </form>
       </main>

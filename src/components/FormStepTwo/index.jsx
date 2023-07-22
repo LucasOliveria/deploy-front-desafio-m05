@@ -4,13 +4,13 @@ import StepsBottom from "../StepsBottom"
 import './style.css';
 import { useState } from 'react';
 
-function FormStepTwo({ setCurrentForm }) {
+function FormStepTwo({ setCurrentStep }) {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   function nextForm() {
-    setCurrentForm(3)
+    setCurrentStep(2)
   }
 
   return (
@@ -30,7 +30,7 @@ function FormStepTwo({ setCurrentForm }) {
       <p>
         Já possui uma conta? Faça seu <span onClick={() => navigate("/")}>Login</span>
       </p>
-      <StepsBottom stepLine={2} />
+      <StepsBottom stepLine={1} />
     </form>
   )
 }
