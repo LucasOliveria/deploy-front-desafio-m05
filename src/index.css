@@ -1,0 +1,27 @@
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  min-height: 100vh;
+
+  --dark-green-text-color: #204A2B;
+  --green-text-color: #3F8751;
+  --light-gray-bg-color: #F8F8F9;
+  --dark-gray-bg-color: #343447;
+  --pink-color: #DA0175;
+  --gray-container-steps: #F0F0F5;
+  --green-steps: #0E8750;
+  --hover-button: #b60362;
+  --next-step: #DEDEE9;
+}
+
+body {
+  font-size: 1.6rem;
+}

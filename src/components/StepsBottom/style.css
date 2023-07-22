@@ -1,0 +1,20 @@
+.container-current-step {
+  align-self: center;
+  display: flex;
+  gap: 8px;
+  width: 262px;
+  height: 6px;
+  position: absolute;
+  bottom: 64px;
+}
+
+.step {
+  width: 82px;
+  height: 100%;
+  background-color: var(--next-step);
+  border-radius: 5px;
+}
+
+.current-step {
+  background-color: var(--green-steps);
+}

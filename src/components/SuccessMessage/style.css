@@ -1,0 +1,38 @@
+.container-success {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+
+.success-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  height: 512px;
+  border-radius: 30px;
+  background-color: var(--gray-container-steps);
+}
+
+.container-success button {
+  all: unset;
+  align-self: center;
+  width: 160px;
+  height: 33px;
+  margin: 24px 0 0px 0;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Nunito;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--light-gray-bg-color);
+  background-color: var(--pink-color);
+  cursor: pointer;
+}
+
+.container-success button:hover {
+  background-color: var(--hover-button);
+}

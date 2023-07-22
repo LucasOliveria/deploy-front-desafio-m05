@@ -1,0 +1,19 @@
+.container-signup {
+  display: flex;
+  height: 100vh;
+}
+
+.container-steps {
+  width: 500px;
+  height: 100%;
+  background-color: var(--gray-container-steps);
+}
+
+.container-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100vw - 500px);
+  height: 100%;
+}

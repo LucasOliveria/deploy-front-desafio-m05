@@ -1,0 +1,125 @@
+.container {
+  display: flex;
+}
+
+.container-aside h1 {
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  width: 388px;
+  height: 93px;
+  top: 158px;
+  left: 56px;
+  color: var(--dark-green-text-color);
+}
+
+.container-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--light-gray-bg-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form h1 {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--dark-gray-bg-color);
+
+}
+
+.container-email,
+.container-password {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.container-email label,
+.container-password label {
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #344054;
+}
+
+.container-email input,
+.container-password input {
+  width: 344px;
+  height: 44px;
+  padding: 10px 14px 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #D0D5DD;
+  gap: 8px;
+  color: #667085;
+}
+
+.container-password div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-password a {
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--pink-color);
+
+}
+
+.btn-submit {
+  align-self: center;
+  margin: 15px;
+  width: 160px;
+  height: 33px;
+  top: 6px;
+  left: 97px;
+  padding: 4px 40px 4px 40px;
+  border-radius: 10px;
+  border: none;
+  gap: 4px;
+  background-color: var(--pink-color);
+  font-family: Nunito;
+  font-size: 18px;
+  font-weight: 400;
+  color: #F8F8F9;
+}
+
+form p {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #3F3F55;
+}
+
+form p span a {
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--pink-color);
+}
