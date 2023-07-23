@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import StepsBottom from "../StepsBottom";
 import success from "../../assets/success.png";
 import './style.css';
 
@@ -12,9 +11,8 @@ function SuccessMessage() {
         <img src={success} alt="success" />
         <h2>Cadastro realizado com sucesso!</h2>
       </div>
-      <button onClick={() => navigate("/")}>Ir para Login</button>
-
-      <StepsBottom stepLine={2} />
+      <button onClick={() => navigate("/")}>Ir para Login
+      </button>
     </div>
   )
 }

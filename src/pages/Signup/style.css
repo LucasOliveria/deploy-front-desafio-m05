@@ -7,15 +7,26 @@
   display: flex;
   width: 500px;
   height: 100%;
-  padding: 178px 0 0 49px;
+  padding: 120px 0 0 49px;
   background-color: var(--gray-container-steps);
 }
 
 .container-register {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: calc(100vw - 500px);
-  height: 100%;
+  padding: 60px 0 50px 0;
+}
+
+.container-forms {
+  height: 65vh;
+}
+
+.container-steps-bottom {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 64px;
 }

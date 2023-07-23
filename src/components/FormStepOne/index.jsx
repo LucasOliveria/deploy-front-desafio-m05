@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import StepsBottom from "../StepsBottom"
 import './style.css';
 
 function FormStepOne({ setCurrentStep }) {
@@ -22,7 +21,6 @@ function FormStepOne({ setCurrentStep }) {
         Já possui uma conta? Faça seu <span onClick={() => navigate("/")}>Login</span>
       </p>
 
-      <StepsBottom stepLine={0} />
     </form>
   )
 }

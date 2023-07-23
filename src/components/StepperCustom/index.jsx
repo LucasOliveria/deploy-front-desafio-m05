@@ -1,6 +1,6 @@
+import currentStepIcon from "../../assets/current-step-icon.svg";
+import nextStepIcon from "../../assets/next-step-icon.svg";
 import './style.css';
-import currentStepIcon from "../../assets/current-step-icon.svg"
-import nextStepIcon from "../../assets/next-step-icon.svg"
 
 function StepperCustom({ currentStep, setCurrentStep }) {
   const handleBack = () => {

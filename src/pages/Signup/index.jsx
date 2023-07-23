@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import './style.css';
 import FormStepOne from '../../components/FormStepOne';
 import FormStepTwo from '../../components/FormStepTwo';
-import SuccessMessage from '../../components/SuccessMessage';
 import StepperCustom from '../../components/StepperCustom';
+import StepsBottom from '../../components/StepsBottom';
+import SuccessMessage from '../../components/SuccessMessage';
+import './style.css';
 
 function SignUp() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -30,6 +31,10 @@ function SignUp() {
             &&
             <SuccessMessage setCurrentStep={setCurrentStep} />
           }
+        </div>
+
+        <div className="container-steps-bottom">
+          <StepsBottom currentStep={currentStep} />
         </div>
       </div>
     </main>

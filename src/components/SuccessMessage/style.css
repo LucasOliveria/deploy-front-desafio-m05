@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 600px;
+  height: 100%;
 }
 
 .success-message {
@@ -10,7 +11,7 @@
   justify-content: center;
   align-items: center;
   gap: 24px;
-  height: 512px;
+  height: 80%;
   border-radius: 30px;
   background-color: var(--gray-container-steps);
 }

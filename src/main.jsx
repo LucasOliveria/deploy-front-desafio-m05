@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <MainRouter />
     <ToastContainer
       position="top-center"
-      autoClose={2000}
+      autoClose={1500}
       hideProgressBar
       newestOnTop={false}
       closeOnClick

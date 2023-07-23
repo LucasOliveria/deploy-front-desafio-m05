@@ -3,14 +3,18 @@
 }
 
 .signin-container-aside {
-  position: relative;
-  background-image: url(../../assets/unsplash_QeVmJxZOv3k.svg);
+  display: flex;
+  justify-content: center;
+  background-image: url(../../assets/unsplash_home_office.svg);
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
-  /* min-height: 895px;
-  min-width: 500px; */
-  /* height: 895px; */
   width: 500px;
   height: 100vh;
+}
+
+.signin-container-aside div {
+  width: 398px;
 }
 
 .signin-container-aside h1,
@@ -19,9 +23,8 @@
 }
 
 .signin-container-aside h1 {
-  position: absolute;
-  top: 15vh;
-  left: 5vw;
+  text-align: center;
+  margin-top: 15vh;
   color: var(--dark-green-text-color);
 }
 
@@ -30,7 +33,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: calc(100vw - 500px);
   background-color: var(--light-gray-bg-color);
 }
 
@@ -45,7 +48,7 @@
   line-height: 31px;
   letter-spacing: 0em;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 32px;
   color: var(--dark-gray-bg-color);
 }
 
@@ -53,7 +56,7 @@
 .signin-container-password {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .signin-container-email label,
@@ -67,7 +70,7 @@
 
 .signin-container-email label,
 .signin-container-password label {
-
+  margin-bottom: 6px;
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
@@ -93,19 +96,17 @@
 }
 
 .signin-container-password a {
-
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
   letter-spacing: 0em;
   text-align: left;
   color: var(--pink-color);
-
 }
 
 .signin-btn-submit {
   align-self: center;
-  margin: 15px;
+  margin: 26px 0 15px 0;
   width: 160px;
   height: 33px;
   top: 6px;
@@ -115,7 +116,6 @@
   border: none;
   gap: 4px;
   background-color: var(--pink-color);
-
   font-size: 18px;
   font-weight: 400;
   color: #F8F8F9;
@@ -126,7 +126,6 @@
   display: flex;
   justify-content: center;
   gap: 5px;
-
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
@@ -136,9 +135,8 @@
 }
 
 .signin-form p span a {
-
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 18px;
   letter-spacing: 0em;
   text-align: left;

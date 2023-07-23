@@ -1,11 +1,11 @@
 import './style.css';
 
-function StepsBottom({ stepLine }) {
+function StepsBottom({ currentStep }) {
   return (
     <div className="container-current-step">
-      <div className={`step ${stepLine === 0 && "current-step"}`}></div>
-      <div className={`step ${stepLine === 1 && "current-step"}`}></div>
-      <div className={`step ${stepLine === 2 && "current-step"}`}></div>
+      <div className={`step ${currentStep === 0 && "current-step"}`}></div>
+      <div className={`step ${currentStep === 1 && "current-step"}`}></div>
+      <div className={`step ${currentStep === 2 && "current-step"}`}></div>
     </div>
   )
 }

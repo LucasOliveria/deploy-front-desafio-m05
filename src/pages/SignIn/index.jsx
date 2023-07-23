@@ -1,8 +1,9 @@
-// import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './style.css';
 import { toast } from "react-toastify";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+import { getItem, setItem } from '../../utils/storage';
 
 function SignIn() {
   const navigate = useNavigate();
@@ -15,14 +16,35 @@ function SignIn() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.email || !form.password) {
-      return toast.error('E-mail e senha são obrigatórios!')
+      return toast.error('E-mail e senha são obrigatórios!');
     }
-    // try {} catch (error) {}
-    navigate('/signup');
+
+    try {
+      const response = await api.post('/login', {
+        ...form
+      });
+      const { token, user } = response.data;
+      setItem('token', token);
+
+      // localStorage.setItem('user', JSON.stringify(user));
+
+      toast.success(`Bem-vindo(a) ${user.name}`);
+
+      navigate('/dashboard/home');
+    } catch (error) {
+      return toast.error(error.response.data.message);
+    }
   }
+
+  useEffect(() => {
+    if (getItem("token")) {
+      navigate('/dashboard/home');
+    }
+  }, []);
+
   return (
     <div className='signin-container'>
       <aside className='signin-container-aside'>

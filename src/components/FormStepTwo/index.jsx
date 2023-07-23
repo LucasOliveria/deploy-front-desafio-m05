@@ -1,8 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import eyeOff from '../../assets/eye-off.svg'
-import StepsBottom from "../StepsBottom"
-import './style.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import eyeOff from '../../assets/eye-off.svg';
+import './style.css';
 
 function FormStepTwo({ setCurrentStep }) {
   const navigate = useNavigate();
@@ -30,7 +29,6 @@ function FormStepTwo({ setCurrentStep }) {
       <p>
         Já possui uma conta? Faça seu <span onClick={() => navigate("/")}>Login</span>
       </p>
-      <StepsBottom stepLine={1} />
     </form>
   )
 }
