@@ -18,9 +18,15 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.email || !form.password) {
-      return toast.error('E-mail e senha são obrigatórios!');
+    if (!form.email) {
+      return toast.info('E-mail obrigatório!');
     }
+
+    if (!form.password) {
+      return toast.info('Senha obrigatória!');
+    }
+
+    const id = toast.loading("Por favor, aguarde...");
 
     try {
       const response = await api.post('/login', {
@@ -31,11 +37,11 @@ function SignIn() {
 
       // localStorage.setItem('user', JSON.stringify(user));
 
-      toast.success(`Bem-vindo(a) ${user.name}`);
+      toast.update(id, { render: `Bem-vindo(a) ${user.name}`, type: "success", isLoading: false, autoClose: 1500 });
 
       navigate('/dashboard/home');
     } catch (error) {
-      return toast.error(error.response.data.message);
+      return toast.update(id, { render: error.response.data, type: "error", isLoading: false, autoClose: 1500 });
     }
   }
 

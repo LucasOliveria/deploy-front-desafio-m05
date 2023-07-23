@@ -9,6 +9,13 @@ import './style.css';
 function SignUp() {
   const [currentStep, setCurrentStep] = useState(0);
 
+  const [signUpForm, setSignUpForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  })
+
   return (
     <main className='container-signup'>
       <div className="container-steps">
@@ -19,12 +26,20 @@ function SignUp() {
           {
             currentStep === 0
             &&
-            <FormStepOne setCurrentStep={setCurrentStep} />
+            <FormStepOne
+              setCurrentStep={setCurrentStep}
+              signUpForm={signUpForm}
+              setSignUpForm={setSignUpForm}
+            />
           }
           {
             currentStep === 1
             &&
-            <FormStepTwo setCurrentStep={setCurrentStep} />
+            <FormStepTwo
+              setCurrentStep={setCurrentStep}
+              signUpForm={signUpForm}
+              setSignUpForm={setSignUpForm}
+            />
           }
           {
             currentStep === 2
