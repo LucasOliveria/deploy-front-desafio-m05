@@ -1,4 +1,6 @@
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import ChargesCard from "./components/ChargesCard";
+import ClientsCard from "./components/ClientsCard";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/Signup";

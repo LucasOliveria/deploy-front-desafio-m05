@@ -1,0 +1,145 @@
+.client-card {
+    width: 556px;
+    height: 397px;
+    border: none;
+    background-color: white;
+    box-shadow: 0 4px 4px 0 rgba(172, 217, 197, 0.25);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.client-card .top {
+    height: 58px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(208, 206, 206, 0.322);
+}
+
+.client-card .top .top-left {
+    display: flex;
+    margin-left: 24px;
+    gap: 8px;
+}
+
+.client-card .top h1 {
+    font-size: 18px;
+    color: var(--cinzas-cinza-2, #3F3F55);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.client-card .top .top-nmr {
+    width: 52px;
+    height: 20px;
+    background-color: rgba(165, 245, 245, 0.426);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin-right: 16.11px;
+}
+
+.client-card .top .top-nmr h3 {
+    color: rgb(0, 207, 207);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.client-card .table {
+    /* padding-left: 24px; */
+    /* margin-right: 12.5px; */
+}
+
+.client-card .table thead tr th {
+    text-align: justify;
+}
+
+.client-card .table thead tr th:first-child,
+.client-card .table tbody tr td:first-child {
+    padding-left: 24px;
+}
+
+.client-card .table thead tr th:last-child,
+.client-card .table tbody tr td:last-child {
+    padding-left: 74px;
+}
+
+
+/* .client-card .table thead tr th:nth-child(2),
+.client-card .table thead tr th:nth-child(3) {
+
+    padding-left: 72px;
+}
+
+.client-card .table tbody tr td:nth-child(2),
+.client-card .table tbody tr td:nth-child(3) {
+
+    padding-left: 72px;
+} */
+/* .client-card .table thead tr {
+    display: flex;
+    justify-content: space-between;
+} */
+
+.client-card .table thead {
+    height: 67.5px;
+}
+
+.client-card .table thead th {
+    border-bottom: 1px solid rgba(208, 206, 206, 0.322);
+    color: var(--cinzas-cinza-2, #3F3F55);
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 50px;
+    letter-spacing: 0.08px;
+}
+
+
+.client-card .table tbody {
+    height: 230px;
+}
+
+
+
+.client-card .table tbody td {
+    border-bottom: 1px solid rgba(208, 206, 206, 0.322);
+    color: var(--neutrals-dark-medium, #6E6E85);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0.07px;
+
+}
+
+
+.client-card .bottom {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-card .bottom h3 {
+    color: var(--principais-rosa-normal, #DA0175);
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    text-decoration-line: underline;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

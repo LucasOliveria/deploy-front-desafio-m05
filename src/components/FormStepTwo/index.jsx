@@ -35,13 +35,11 @@ function FormStepTwo({ setCurrentStep, signUpForm, setSignUpForm }) {
 
     const id = toast.loading("Por favor, aguarde...")
     try {
-      const response = await api.post("/user", {
+      await api.post("/user", {
         name: signUpForm.name,
         email: signUpForm.email,
         password: signUpForm.password
       });
-
-      console.log(response.data);
 
       toast.update(id, { render: "Cadastro realizado com sucesso!", type: "success", isLoading: false, autoClose: 1500 });
 
@@ -55,8 +53,6 @@ function FormStepTwo({ setCurrentStep, signUpForm, setSignUpForm }) {
     }
 
   }
-
-
 
   return (
     <form onSubmit={handleSignUpUser} className='form-signup'>
