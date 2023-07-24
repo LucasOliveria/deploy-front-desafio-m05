@@ -1,5 +1,6 @@
 import currentStepIcon from "../../assets/current-step-icon.svg";
 import nextStepIcon from "../../assets/next-step-icon.svg";
+import checkStepIcon from "../../assets/check-step-icon.svg";
 import './style.css';
 
 function StepperCustom({ currentStep, setCurrentStep }) {
@@ -14,7 +15,7 @@ function StepperCustom({ currentStep, setCurrentStep }) {
   return (
     <div className="content-steps">
       <div className='step-box' onClick={handleBack}>
-        <img src={currentStepIcon} alt="step" />
+        <img src={currentStep === 0 ? currentStepIcon : checkStepIcon} alt="step" />
         <h3>Cadastre-se</h3>
       </div>
 
@@ -24,7 +25,7 @@ function StepperCustom({ currentStep, setCurrentStep }) {
       </div>
 
       <div className='step-box'>
-        <img src={currentStep === 1 || currentStep === 2 ? currentStepIcon : nextStepIcon} alt="step" />
+        <img src={currentStep === 1 ? currentStepIcon : currentStep === 0 ? nextStepIcon : checkStepIcon} alt="step" />
         <h3>Escolha uma senha</h3>
       </div>
 
@@ -35,7 +36,7 @@ function StepperCustom({ currentStep, setCurrentStep }) {
       </div>
 
       <div className='step-box'>
-        <img src={currentStep === 2 ? currentStepIcon : nextStepIcon} alt="step" />
+        <img src={currentStep === 2 ? checkStepIcon : nextStepIcon} alt="step" />
         <h3>Cadastro realizado com sucesso</h3>
       </div>
 

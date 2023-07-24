@@ -1,3 +1,4 @@
+import ClientsTable from '../../components/ClientsTable';
 import Header from '../../components/HomeComponents/Header';
 import Sidebar from '../../components/HomeComponents/Sidebar';
 import './style.css';
@@ -10,8 +11,9 @@ function Home() {
       </aside>
       <main className='main-content'>
         <Header />
+
         <div className='cards-wrapper'>
-          <div className='cards total-cards'>
+          {/* <div className='cards total-cards'>
             <div>card</div>
             <div>card</div>
             <div>card</div>
@@ -25,8 +27,11 @@ function Home() {
             <div>card</div>
             <div>card</div>
             <div>card</div>
-          </div>
+          </div> */}
+          <ClientsTable />
         </div>
+
+
       </main>
     </div>
   )

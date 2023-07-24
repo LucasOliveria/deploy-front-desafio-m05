@@ -1,0 +1,143 @@
+.container-clients-table {
+  width: 100%;
+}
+
+.utility-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-and-title {
+  display: flex;
+  align-items: center;
+}
+
+.icon-and-title h2 {
+  margin-left: 16px;
+  font-family: Montserrat;
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 130%;
+}
+
+.icon-and-title h2,
+.clients-table thead {
+  color: var(--gray-n2);
+}
+
+.content-utilities {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.add-client-button {
+  all: unset;
+  width: 266px;
+  height: 33px;
+  text-align: center;
+  color: var(--light-gray-bg-color);
+  background-color: var(--pink-color);
+  cursor: pointer;
+}
+
+.add-client-button,
+.search-input input {
+  border-radius: 10px;
+}
+
+.add-client-button,
+.search-input input::placeholder,
+.clients-table thead,
+.clients-table tbody {
+  font-family: Nunito;
+}
+
+.add-client-button,
+.search-input input::placeholder {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.add-client-button:hover {
+  background-color: var(--hover-button);
+}
+
+.search-input {
+  position: relative;
+}
+
+.search-input input {
+  width: 318px;
+  height: 39px;
+  padding-left: 8px;
+  border: none;
+  box-shadow: 4px 7px 6px #da01750d;
+}
+
+.search-input input::placeholder {
+  color: var(--gray-n3);
+}
+
+img[alt="filter icon "] {
+  cursor: pointer;
+}
+
+img[alt="search icon"] {
+  position: absolute;
+  right: 8px;
+  top: 7.5px;
+}
+
+.content-clients-table {
+  min-width: 345px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  margin-top: 24px;
+  padding: 12px 23px;
+  overflow-x: auto;
+}
+
+.clients-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.clients-table thead {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 0.08px;
+}
+
+.clients-table thead,
+.clients-table tbody tr,
+.clients-table thead tr th:first-child {
+  height: 50px;
+}
+
+.clients-table thead tr,
+.clients-table tbody tr {
+  text-align: justify;
+}
+
+.clients-table tbody {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0.07px;
+  color: var(--gray-n3);
+}
+
+.clients-table tbody tr {
+  border-top: 1px solid #EFF0F6;
+}
+
+.clients-table thead tr th:first-child {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}

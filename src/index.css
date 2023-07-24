@@ -6,6 +6,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-style: normal;
 }
 
 :root {
@@ -20,7 +21,8 @@ html {
   --green-steps: #0E8750;
   --hover-button: #b60362;
   --next-step: #DEDEE9;
-  --cinza-n2: #3F3F55;
+  --gray-n2: #3F3F55;
+  --gray-n3: #747488;
 }
 
 body {
