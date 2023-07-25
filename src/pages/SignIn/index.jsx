@@ -2,11 +2,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import './style.css';
 import { toast } from "react-toastify";
 import { useEffect, useState } from 'react';
-import { api } from '../../services/api';
 import { getItem, setItem } from '../../utils/storage';
+import api from '../../services/api';
 
 function SignIn() {
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
     email: '',
     password: ''
@@ -34,8 +35,6 @@ function SignIn() {
       });
       const { token, user } = response.data;
       setItem('token', token);
-
-      // localStorage.setItem('user', JSON.stringify(user));
 
       toast.update(id, { render: `Bem-vindo(a) ${user.name}`, type: "success", isLoading: false, autoClose: 1500 });
 

@@ -1,12 +1,17 @@
 import TableRow from '../TableRow';
 import './style.css';
-function ChargesCard() {
+function ChargesCard({ title, total, textColor, backgroundColor }) {
   return (
     <div className='chargesCard'>
       <div className='top'>
-        <h1>Cobranças Pagas</h1>
-        <div className='top-nmr'>
-          <h3>10</h3>
+        <h1>{title}</h1>
+        <div className='top-nmr'
+          style={{
+            color: `${textColor}`,
+            backgroundColor: `${backgroundColor}`
+          }}
+        >
+          <h3>{total}</h3>
         </div>
       </div>
       <table className='table'>

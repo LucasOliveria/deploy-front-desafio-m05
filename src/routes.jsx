@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
-import ChargesCard from "./components/ChargesCard";
-import ClientsCard from "./components/ClientsCard";
-import Home from "./pages/Home";
+import ClientsTable from "./components/ClientsTable";
+import Home from "./components/Home";
+import dashboardContext from "./contexts/dashboardContext";
+import Dashboard from "./pages/Dashboard";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/Signup";
+import { getItem } from "./utils/storage";
 
 function ProtectedRouter({ redirectTo }) {
-  const Authenticade = true;
-
-  return Authenticade ? <Outlet /> : <Navigate to={redirectTo} />
+  const Authenticated = getItem('token');
+  return Authenticated ? <Outlet /> : <Navigate to={redirectTo} />
 }
 
 function MainRouter() {
@@ -18,9 +20,16 @@ function MainRouter() {
       <Route path="/signup" element={<SignUp />} />
 
       <Route element={<ProtectedRouter redirectTo={"/"} />}>
-        <Route path="/dashboard/home" element={<Home />} />
-        <Route path="/dashboard/clientes" element={<Home />} />
-        <Route path="/dashboard/cobrancas" element={<Home />} />
+        <Route path="/dashboard/home" element={
+          <Dashboard>
+            <Home />
+          </Dashboard>} />
+        <Route path="/dashboard/clientes" element={
+          <Dashboard>
+            <ClientsTable />
+          </Dashboard>
+        } />
+        <Route path="/dashboard/cobrancas" element={<Dashboard />} />
       </Route>
     </Routes>
   )

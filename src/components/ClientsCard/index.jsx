@@ -1,15 +1,19 @@
 import './style.css';
-import frame from '../../assets/Frame.jpg'
-function ClientsCard() {
+function ClientsCard({ icon, title, total, textColor, backgroundColor }) {
   return (
     <div className='client-card'>
       <div className='top'>
         <div className='top-left'>
-          <img src={frame} alt="frame" />
-          <h1>Clientes do Dia</h1>
+          <img src={icon} alt="frame" />
+          <h1>{title}</h1>
         </div>
-        <div className='top-nmr'>
-          <h3>10</h3>
+        <div className='top-nmr' style={{
+          backgroundColor: `${backgroundColor}`
+        }}>
+          <h3 style={{
+            color: `${textColor}`
+          }}
+          >{total}</h3>
         </div>
       </div>
       <table className='table'>

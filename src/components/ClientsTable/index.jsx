@@ -1,14 +1,18 @@
-import './style.css';
-import clientIconTable from "../../assets/client-icon-table.svg"
-import filterIcon from "../../assets/filter-icon.svg";
-import searchIcon from "../../assets/search-icon.svg";
+import { useState } from 'react';
 import addChargeIcon from "../../assets/add-charge-icon.svg";
 import changeOrder from "../../assets/change-order.svg";
+import clientIconTable from "../../assets/client-icon-table.svg";
 import defaulter from "../../assets/defaulter.svg";
+import filterIcon from "../../assets/filter-icon.svg";
+import searchIcon from "../../assets/search-icon.svg";
 import upToDate from "../../assets/up-to-date.svg";
+import ClientsAddModal from '../ClientsAddModal';
+import './style.css';
 
 
 function ClientsTable() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="container-clients-table">
       <div className="utility-bar">
@@ -19,7 +23,7 @@ function ClientsTable() {
         </div>
 
         <div className="content-utilities">
-          <button className='add-client-button'>
+          <button className='add-client-button' onClick={() => setShowModal(true)}>
             + Adicionar cliente
           </button>
 
@@ -83,6 +87,7 @@ function ClientsTable() {
           </tbody>
         </table>
       </div>
+      {showModal && <ClientsAddModal onClose={() => setShowModal(false)} />}
     </div>
   )
 }

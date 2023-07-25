@@ -6,22 +6,38 @@
 }
 
 .form-signup h1 {
-  text-align: center;
   font-family: Montserrat;
-  font-size: 24px;
-  font-style: normal;
+  font-size: 2.4rem;
   font-weight: 700;
-  color: var(--dark-gray-bg-color);
   margin-bottom: 32px;
 }
 
+.form-signup h1,
+.form-signup button,
+.form-signup p {
+  text-align: center;
+}
+
+.form-signup h1,
 .form-signup label {
-  font-family: Nunito;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
+  color: var(--dark-gray-bg-color);
+}
+
+.form-signup label {
+  line-height: 2rem;
   margin-bottom: 6px;
+}
+
+.form-signup label,
+.form-signup p {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.form-signup label,
+.form-signup p,
+.form-signup button {
+  font-family: Nunito;
 }
 
 .form-signup label:last-of-type {
@@ -33,24 +49,36 @@
   height: 44px;
   padding: 10px 14px;
   border-radius: 8px;
-  border: 1px solid #D0D5DD;
+  border: var(--border-input);
+}
+
+.form-signup input::placeholder {
+  color: var(--gray-n4);
+  font-family: Inter;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.form-signup input::placeholder,
+.form-signup button {
+  font-weight: 400;
 }
 
 .form-signup button {
-  all: unset;
   align-self: center;
   width: 160px;
   height: 33px;
   margin: 46px 0 15px 0;
+  border: none;
   border-radius: 10px;
-  text-align: center;
-  font-family: Nunito;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
+  font-size: 1.8rem;
   line-height: normal;
   color: var(--light-gray-bg-color);
   background-color: var(--pink-color);
+}
+
+.form-signup button,
+.form-signup span {
   cursor: pointer;
 }
 
@@ -59,16 +87,10 @@
 }
 
 .form-signup p {
-  text-align: center;
-  font-family: Nunito;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 130%
 }
 
 .form-signup span {
   color: var(--pink-color);
   text-decoration: underline;
-  cursor: pointer;
 }

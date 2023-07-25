@@ -6,22 +6,25 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.min.css';
+import DashboardContextProvider from './contexts/dashboardContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <MainRouter />
-    <ToastContainer
-      position="top-center"
-      autoClose={1500}
-      hideProgressBar
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="colored"
-    />
-  </BrowserRouter>
+  <DashboardContextProvider>
+    <BrowserRouter>
+      <MainRouter />
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+    </BrowserRouter>
+  </DashboardContextProvider>
 
 )

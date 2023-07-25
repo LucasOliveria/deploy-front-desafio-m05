@@ -31,9 +31,11 @@
 .signin-container-main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  height: 100vh;
   width: calc(100vw - 500px);
+  padding: 136px 0 0 0;
   background-color: var(--light-gray-bg-color);
 }
 
@@ -43,9 +45,9 @@
 }
 
 .signin-form-title {
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 700;
-  line-height: 31px;
+  line-height: 3.1rem;
   letter-spacing: 0em;
   text-align: center;
   margin-bottom: 32px;
@@ -71,12 +73,12 @@
 .signin-container-email label,
 .signin-container-password label {
   margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 600;
-  line-height: 20px;
+  line-height: 2rem;
   letter-spacing: 0em;
   text-align: left;
-  color: #344054;
+  color: var(--gray-n1);
 }
 
 .signin-container-email input,
@@ -85,9 +87,17 @@
   height: 44px;
   padding: 10px 14px 10px 14px;
   border-radius: 8px;
-  border: 1px solid #D0D5DD;
+  border: var(--border-input);
   gap: 8px;
-  color: #667085;
+}
+
+.signin-container-email input::placeholder,
+.signin-container-password input::placeholder {
+  color: var(--gray-n4);
+  font-family: Inter;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .signin-container-password div {
@@ -96,9 +106,9 @@
 }
 
 .signin-container-password a {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.8rem;
   letter-spacing: 0em;
   text-align: left;
   color: var(--pink-color);
@@ -116,28 +126,32 @@
   border: none;
   gap: 4px;
   background-color: var(--pink-color);
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 400;
   color: #F8F8F9;
   cursor: pointer;
+}
+
+.signin-btn-submit:hover {
+  background-color: var(--hover-button);
 }
 
 .signin-form p {
   display: flex;
   justify-content: center;
   gap: 5px;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.8rem;
   letter-spacing: 0em;
   text-align: left;
   color: #3F3F55;
 }
 
 .signin-form p span a {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.8rem;
   letter-spacing: 0em;
   text-align: left;
   color: var(--pink-color);

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import eyeOff from '../../assets/eye-off.svg';
 import './style.css';
-import { api } from "../../services/api"
+import api from '../../services/api';
 
 function FormStepTwo({ setCurrentStep, signUpForm, setSignUpForm }) {
   const navigate = useNavigate();

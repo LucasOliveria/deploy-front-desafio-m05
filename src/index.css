@@ -21,10 +21,26 @@ html {
   --green-steps: #0E8750;
   --hover-button: #b60362;
   --next-step: #DEDEE9;
-  --gray-n2: #3F3F55;
+  --gray-n1: #344054 --gray-n2: #3F3F55;
   --gray-n3: #747488;
+  --gray-n4: #667085;
+  --blue-n1: #1fa8af;
+  --red-n1: #971d1d;
+  --yellow-n1: #c5a505;
+  --low-opacity-blue-n1: #1fa8af1c;
+  --low-opacity-red-n1: #971d1d1c;
+  --low-opacity-yellow-n1: #c5a5051c;
+  --light-green: #ACD9C5;
+  --modal-background-color: rgba(145, 154, 150, 0.3);
+  --border-input: 1px solid #D0D5DD;
+  --white: #ffffff;
 }
 
 body {
   font-size: 1.6rem;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--info,
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  background-color: var(--pink-color) !important;
 }

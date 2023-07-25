@@ -1,0 +1,19 @@
+.HomeComponent{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.HomeComponent .cards-wrapper {
+  flex-grow: 1;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:27px
+}
+
+.HomeComponent .cards-wrapper .cards {
+  display: flex;
+  justify-content: space-between;
+}

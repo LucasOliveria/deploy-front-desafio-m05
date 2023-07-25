@@ -1,0 +1,35 @@
+.MenuDialog {
+  border: unset;
+  border-radius: 8px;
+}
+
+.MenuDialog .modal-wrapper{
+  display: flex;
+  color: var(--gray-n3);
+  font-family: Nunito;
+  font-size: 8px;
+  line-height: normal;
+  padding: 8px 15px;
+  gap:16px;
+}
+
+.MenuDialog .polygon-img {
+  position: absolute;
+  top: -8px;
+  left: 6px;
+}
+
+.MenuDialog .button-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 24px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.MenuDialog .button-wrapper .edit-icon.icon-img {
+  margin: 3px 6px 0;
+  height: 16px;
+}

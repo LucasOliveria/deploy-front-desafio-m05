@@ -31,7 +31,6 @@
 .chargesCard .top .top-nmr {
     width: 50px;
     height: 20px;
-    background-color: rgba(165, 245, 245, 0.426);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +39,6 @@
 }
 
 .chargesCard .top .top-nmr h3 {
-    color: rgb(0, 207, 207);
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-style: normal;
