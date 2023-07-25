@@ -8,7 +8,6 @@ import { getItem } from '../../utils/storage';
 import './style.css';
 
 function Dashboard({ children }) {
-  // const [username, setUsername] = useState('Lorena Ramos');
   const { setUser, setClients } = useDashboard();
 
   const token = getItem("token");
@@ -22,9 +21,7 @@ function Dashboard({ children }) {
       })
 
       setUser(response.data);
-      console.log(response.data);
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data);
     }
   }
@@ -39,7 +36,6 @@ function Dashboard({ children }) {
       });
 
       setClients([...response.data]);
-      console.log(response.data);
     } catch (error) {
       return toast.error(error.response.data);
     }
