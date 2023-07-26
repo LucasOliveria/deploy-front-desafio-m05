@@ -1,7 +1,7 @@
 .form-signup {
   display: flex;
   flex-direction: column;
-  width: 368px;
+  width: 344px;
   height: 100%;
 }
 
@@ -24,7 +24,6 @@
 }
 
 .form-signup label {
-  line-height: 2rem;
   margin-bottom: 6px;
 }
 
@@ -72,7 +71,6 @@
   border: none;
   border-radius: 10px;
   font-size: 1.8rem;
-  line-height: normal;
   color: var(--light-gray-bg-color);
   background-color: var(--pink-color);
 }
@@ -87,7 +85,7 @@
 }
 
 .form-signup p {
-  line-height: 130%
+  color: var(--gray-n2);
 }
 
 .form-signup span {

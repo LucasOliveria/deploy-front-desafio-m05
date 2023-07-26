@@ -1,13 +1,13 @@
+import { useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ArrowDown from '../../assets/arrow-down.svg';
-import './style.css';
-// import { formatAvatarLetters, formatUsernameFirstName } from '../../helpers/formatter';
-import { useRef, useState } from 'react';
+import { formatAvatarLetters, formatUsernameFirstName } from '../../helpers/formatter';
 import useDashboard from '../../hooks/useDashboard';
 import HeaderDialogMenu from '../HeaderDialogMenu';
+import './style.css';
 
 function Header() {
-  const { user, setUser, api } = useDashboard();
+  const { user } = useDashboard();
 
   const { pathname } = useLocation();
 
@@ -24,8 +24,6 @@ function Header() {
     return setOpenModal(!openModal)
   }
 
-
-
   return (
     <header className='Header'>
       {pathname === '/dashboard/home' ?
@@ -33,12 +31,10 @@ function Header() {
         <p className='header-secondary-title'>Clientes</p>}
       <ul className='header-user-menu'>
         <li className='avatar'>
-          {/* {formatAvatarLetters(username)} */}
-          CL
+          {user?.name && formatAvatarLetters(user.name)}
         </li>
         <li title={user.name} className='user-name'>
-          {/* {formatUsernameFirstName(username)} */}
-          {user.name}
+          {user?.name && formatUsernameFirstName(user.name)}
         </li>
         <li className='menu-button' onClick={handleMenuModal}>
           <img className='menu-button' src={ArrowDown} alt="abrir menu" />

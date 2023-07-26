@@ -2,10 +2,14 @@ import './style.css';
 import EditIcon from '../../assets/edit-icon.svg'
 import LogoutIcon from '../../assets/logout-icon.svg'
 import MenuDialogPolygonImg from '../../assets/menu-dialog-polygon.svg'
+import { clearStorage } from '../../utils/storage';
+import { useNavigate } from 'react-router-dom';
 
 function HeaderDialogMenu({ modalRef }) {
+  const navigateTo = useNavigate()
   const handleLogout = () => {
-    //TODO
+    clearStorage()
+    navigateTo('/')
   }
 
   const handleUserEdit = () => {

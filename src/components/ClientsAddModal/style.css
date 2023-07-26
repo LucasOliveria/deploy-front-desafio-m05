@@ -60,7 +60,7 @@
   color: var(--gray-n2);
 }
 
-.add-modal-form input {
+.add-modal-form-input {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -71,6 +71,21 @@
   border-radius: 8px;
   border: var(--border-input);
   gap: 8px;
+}
+
+.add-modal-error-border-input {
+  border: 1px solid var(--red-n2);
+}
+
+.add-modal-error {
+  font-family: 'Nunito';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: var(--red-n2);
+  margin-bottom: 5px;
 }
 
 .add-modal-form label,

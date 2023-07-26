@@ -21,11 +21,13 @@ html {
   --green-steps: #0E8750;
   --hover-button: #b60362;
   --next-step: #DEDEE9;
-  --gray-n1: #344054 --gray-n2: #3F3F55;
+  --gray-n1: #344054;
+  --gray-n2: #3F3F55;
   --gray-n3: #747488;
   --gray-n4: #667085;
   --blue-n1: #1fa8af;
   --red-n1: #971d1d;
+  --red-n2: #E70000;
   --yellow-n1: #c5a505;
   --low-opacity-blue-n1: #1fa8af1c;
   --low-opacity-red-n1: #971d1d1c;

@@ -1,17 +1,18 @@
 import { useState } from 'react';
-import addChargeIcon from "../../assets/add-charge-icon.svg";
 import changeOrder from "../../assets/change-order.svg";
 import clientIconTable from "../../assets/client-icon-table.svg";
-import defaulter from "../../assets/defaulter.svg";
+
 import filterIcon from "../../assets/filter-icon.svg";
 import searchIcon from "../../assets/search-icon.svg";
-import upToDate from "../../assets/up-to-date.svg";
+import useDashboard from '../../hooks/useDashboard';
 import ClientsAddModal from '../ClientsAddModal';
+import ClientsTableRow from '../ClientsTableRow';
 import './style.css';
 
 
 function ClientsTable() {
   const [showModal, setShowModal] = useState(false);
+  const { clients } = useDashboard()
 
   return (
     <div className="container-clients-table">
@@ -52,38 +53,11 @@ function ClientsTable() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Sara da Silva</td>
-              <td>054 365 255 87</td>
-              <td>sarasilva@cubos.io</td>
-              <td>71 9 9462 8654</td>
-              <td><img src={defaulter} alt="defalter" /></td>
-              <td><img src={addChargeIcon} alt="add charge" /></td>
-            </tr>
-            <tr>
-              <td>Cameron Williamson</td>
-              <td>054 365 255 87</td>
-              <td>cameronw@cubos.io</td>
-              <td>71 9 9962 8658</td>
-              <td><img src={defaulter} alt="defalter" /></td>
-              <td><img src={addChargeIcon} alt="add charge" /></td>
-            </tr>
-            <tr>
-              <td>Savannah Nguyen</td>
-              <td>054 365 255 87</td>
-              <td>snguyen@cubos.io</td>
-              <td>71 9 9762 8658</td>
-              <td><img src={upToDate} alt="up to date" /></td>
-              <td><img src={addChargeIcon} alt="add charge" /></td>
-            </tr>
-            <tr>
-              <td>Savannah Nguyen</td>
-              <td>054 365 255 87</td>
-              <td>snguyen@cubos.io</td>
-              <td>71 9 9762 8658</td>
-              <td><img src={upToDate} alt="up to date" /></td>
-              <td><img src={addChargeIcon} alt="add charge" /></td>
-            </tr>
+            {!!clients.length &&
+              clients.map((client) => (
+                <ClientsTableRow key={client.id} client={client} />
+              ))
+            }
           </tbody>
         </table>
       </div>
