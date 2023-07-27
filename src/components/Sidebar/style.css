@@ -3,12 +3,6 @@
   flex-direction: column;
   width: 108px;
   padding-top: 45px;
-}
-
-.Sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 108px;
   gap: 72px;
 }
 

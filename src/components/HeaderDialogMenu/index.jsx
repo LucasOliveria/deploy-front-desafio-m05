@@ -2,18 +2,29 @@ import './style.css';
 import EditIcon from '../../assets/edit-icon.svg'
 import LogoutIcon from '../../assets/logout-icon.svg'
 import MenuDialogPolygonImg from '../../assets/menu-dialog-polygon.svg'
+import useDashboard from '../../hooks/useDashboard';
 import { clearStorage } from '../../utils/storage';
 import { useNavigate } from 'react-router-dom';
 
 function HeaderDialogMenu({ modalRef }) {
   const navigateTo = useNavigate()
+
+  const { setOpenEditUser, setFormData, user } = useDashboard();
+
   const handleLogout = () => {
     clearStorage()
     navigateTo('/')
   }
 
   const handleUserEdit = () => {
-    //TODO
+    setOpenEditUser(true)
+    setFormData({
+      ...user,
+      password: '',
+      cpf: '',
+      phone: '',
+      confirmNewPassword: '',
+    })
   }
 
   return (

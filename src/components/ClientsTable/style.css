@@ -6,6 +6,7 @@
 .utility-bar {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -40,7 +41,6 @@
   text-align: center;
   color: var(--light-gray-bg-color);
   background-color: var(--pink-color);
-  cursor: pointer;
 }
 
 .add-client-button,
@@ -82,7 +82,8 @@
   color: var(--gray-n3);
 }
 
-img[alt="filter icon "] {
+img[alt="filter icon "],
+.add-client-button {
   cursor: pointer;
 }
 
@@ -99,6 +100,7 @@ img[alt="search icon"] {
   margin-top: 24px;
   padding: 12px 23px;
   overflow-x: auto;
+  max-height: 400px;
 }
 
 .clients-table {

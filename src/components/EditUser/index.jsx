@@ -3,22 +3,31 @@ import close from '../../assets/close.jpg';
 import eye from '../../assets/eye-off.svg';
 import SuccessRegistration from '../SuccesEditUser';
 import { useState } from 'react';
-
+import useDashboard from '../../hooks/useDashboard'; import { toast } from 'react-toastify';
+;
+import api from '../../services/api';
+import { getItem } from '../../utils/storage';
 function EditUser() {
-  const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    cpf: '',
-    telefone: '',
-    novaSenha: '',
-    confirmarSenha: '',
-  });
 
   const [showPassword, setShowPassword] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const [successRegistration, setSuccessRegistration] = useState(false);
+  const { formData, setFormData, setUser, user, setOpenEditUser } = useDashboard();
+  const token = getItem('token');
+
+
   function handleChange(event) {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+    if (name === 'cpf') {
+      if (isNaN(value)) {
+        value = '';
+      }
+    }
+    if (name === 'phone') {
+      if (isNaN(value)) {
+        value = '';
+      }
+    }
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -32,46 +41,82 @@ function EditUser() {
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.nome) {
-      errors.nome = 'Este campo deve ser preenchido';
+    if (!formData.name) {
+      errors.name = 'Este campo deve ser preenchido';
     }
     if (!formData.email) {
       errors.email = 'Este campo deve ser preenchido';
     }
-    if (!formData.novaSenha) {
-      errors.novaSenha = 'Este campo deve ser preenchido';
+    if (!formData.password) {
+      errors.password = 'Este campo deve ser preenchido';
     }
-    if (!formData.confirmarSenha) {
-      errors.confirmarSenha = 'Este campo deve ser preenchido';
-    } else if (formData.novaSenha !== formData.confirmarSenha) {
-      errors.confirmarSenha = 'As senhas não coincidem';
+    if (!formData.confirmNewPassword) {
+      errors.confirmNewPassword = 'Este campo deve ser preenchido';
+    } else if (formData.password !== formData.confirmNewPassword) {
+      errors.confirmNewPassword = 'As senhas não coincidem';
     }
 
     return errors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const errors = validateForm();
     setFormErrors(errors);
 
-    if (Object.keys(errors).length === 0) {
-      console.log('Valores dos campos:');
-      console.log(formData);
-      setSuccessRegistration(true);
+    if (Object.keys(errors).length > 0) {
+      return;
     }
+
+    const id = toast.loading('Por favor, aguarde...');
+
+    try {
+      const response = await api.put('/user', {
+        name: formData.name,
+        email: formData.email,
+        cpf: formData.cpf,
+        phone: formData.phone,
+        password: formData.password,
+      },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+      setUser(formData)
+      toast.update(id, { render: response.data, type: "success", isLoading: false, autoClose: 1500 });
+      setSuccessRegistration(true);
+
+      return;
+    } catch (error) {
+      console.log(error);
+      toast.update(id, { render: error.response.data, type: "error", isLoading: false, autoClose: 1500 });
+      return;
+    }
+
+
   };
+
+  function handleCloseModal() {
+    if (successRegistration) {
+      setOpenEditUser(false);
+      setSuccessRegistration(false);
+    }
+  }
+
+
   return (
-    <div className='editUser'>
+    <div className='editUser' onClick={handleCloseModal}>
       {successRegistration ?
         <SuccessRegistration />
         :
-        (<div className='editUser-modal'>
+        (<div className='editUser-modal' >
           <img
             className='close'
             src={close}
             alt='close'
+            onClick={() => setOpenEditUser(false)}
           />
           <form onSubmit={handleSubmit}>
             <h1>Edite seu cadastro</h1>
@@ -79,14 +124,14 @@ function EditUser() {
               Nome*
               <input
                 type='text'
-                name='nome'
-                id='nome'
+                name='name'
+                id='name'
                 placeholder='Digite seu nome'
-                value={formData.nome}
+                value={formData.name}
                 onChange={handleChange}
-                className={formErrors.nome ? 'error' : ''}
+                className={formErrors.name ? 'error' : ''}
               />
-              {formErrors.nome && <span className='error-message'>{formErrors.nome}</span>}
+              {formErrors.name && <span className='error-message'>{formErrors.name}</span>}
             </label>
             <label>
               Email*
@@ -104,24 +149,28 @@ function EditUser() {
 
             <div className='cpf-phone'>
               <label>
-                CPF*
+                CPF
                 <input
                   type="text"
                   name="cpf"
                   id="cpf"
+                  maxLength={11}
+                  minLength={11}
                   placeholder='Digite seu CPF'
                   value={formData.cpf}
                   onChange={handleChange}
                 />
               </label>
               <label>
-                Telefone*
+                Telefone
                 <input
-                  type="phone"
+                  type="text"
                   name="phone"
                   id="phone"
+                  maxLength={11}
+                  minLength={11}
                   placeholder='Digite seu Telefone'
-                  value={formData.telefone}
+                  value={formData.phone}
                   onChange={handleChange}
                 />
               </label>
@@ -131,17 +180,17 @@ function EditUser() {
               <div className='content-input-eye'>
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  name='novaSenha'
-                  id='novaSenha'
-                  value={formData.novaSenha}
+                  name='password'
+                  id='password'
+                  value={formData.password}
                   onChange={handleChange}
-                  className={formErrors.novaSenha ? 'error' : ''}
+                  className={formErrors.password ? 'error' : ''}
                 />
                 <img className='eye' src={eye} alt='eye' onClick={handleTogglePassword} />
               </div>
 
-              {formErrors.novaSenha && (
-                <span className='error-message'>{formErrors.novaSenha}</span>
+              {formErrors.password && (
+                <span className='error-message'>{formErrors.password}</span>
               )}
             </label>
             <label className='password-label'>
@@ -150,16 +199,16 @@ function EditUser() {
               <div className='content-input-eye'>
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  name='confirmarSenha'
-                  id='confirmarSenha'
-                  value={formData.confirmarSenha}
+                  name='confirmNewPassword'
+                  id='confirmNewPassword'
+                  value={formData.confirmNewPassword}
                   onChange={handleChange}
-                  className={formErrors.confirmarSenha ? 'error' : ''}
+                  className={formErrors.confirmNewPassword ? 'error' : ''}
                 />
                 <img className='eye' src={eye} alt='eye' onClick={handleTogglePassword} />
               </div>
-              {formErrors.confirmarSenha && (
-                <span className='error-message'>{formErrors.confirmarSenha}</span>
+              {formErrors.confirmNewPassword && (
+                <span className='error-message'>{formErrors.confirmNewPassword}</span>
               )}
             </label>
             <div className='center-button'>

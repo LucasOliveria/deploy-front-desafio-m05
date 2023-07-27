@@ -12,6 +12,17 @@ function DashboardContextProvider({ children }) {
     phone: ""
   });
 
+  const [openEditUser, setOpenEditUser] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    cpf: '',
+    phone: '',
+    confirmNewPassword: '',
+  });
+
   const [clients, setClients] = useState([]);
 
   return (
@@ -19,7 +30,11 @@ function DashboardContextProvider({ children }) {
       user,
       setUser,
       clients,
-      setClients
+      setClients,
+      openEditUser,
+      setOpenEditUser,
+      formData,
+      setFormData
     }}>
       {children}
     </dashboardContext.Provider>

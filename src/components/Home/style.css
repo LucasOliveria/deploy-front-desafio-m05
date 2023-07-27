@@ -1,19 +1,20 @@
-.HomeComponent{
+.HomeComponent {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
 .HomeComponent .cards-wrapper {
-  flex-grow: 1;
   padding: 0 80px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap:27px
+  gap: 22px;
 }
 
-.HomeComponent .cards-wrapper .cards {
-  display: flex;
-  justify-content: space-between;
+@media (min-width: 1024px) and (max-width: 1300px) {
+
+  .HomeComponent .cards-wrapper {
+    padding: 0 80px;
+    justify-content: center;
+    gap: 20px;
+  }
 }

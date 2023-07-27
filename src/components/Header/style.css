@@ -1,19 +1,21 @@
 .Header {
   display: flex;
-  margin: 40px 32px;
+  height: 112px;
+  margin: 0px 32px 19px 32px;
+  padding: 0 105px 0 48px;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--light-green);
 }
 
 .Header ul {
-  list-style-type: none
+  list-style-type: none;
 }
 
 .Header .header-primary-title {
   font-size: 2.6rem;
   line-height: 34px;
   text-align: center;
-  margin: 14px 0 24px 50px
 }
 
 .Header .header-secondary-title {
@@ -24,13 +26,13 @@
   align-self: end;
   color: var(--green-steps);
   padding-left: 70px;
+  margin-bottom: 4px;
 }
 
 .Header .header-user-menu {
   display: flex;
   gap: 8px;
   color: var(--green-steps);
-  margin: 0 105px 24px 0;
   height: fit-content;
   align-items: center;
 

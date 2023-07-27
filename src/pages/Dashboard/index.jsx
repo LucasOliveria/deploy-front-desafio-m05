@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Header from '../../components/Header';
+import EditUser from '../../components/EditUser';
 import Sidebar from '../../components/Sidebar';
 import useDashboard from '../../hooks/useDashboard';
 import api from '../../services/api';
@@ -10,7 +11,7 @@ import { clearStorage } from '../../utils/storage';
 import './style.css';
 
 function Dashboard({ children }) {
-  const { setUser, setClients } = useDashboard();
+  const { setUser, setClients, openEditUser } = useDashboard();
 
   const navigateTo = useNavigate()
 
@@ -50,6 +51,7 @@ function Dashboard({ children }) {
         <Header />
         {children}
       </main>
+      {openEditUser && <EditUser />}
     </div>
   )
 }

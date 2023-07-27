@@ -5,7 +5,8 @@ import './style.css'
 function ChargesResume({ imageSrc, title, value, backgroundColor }) {
   return (
     <div className='ChargesResume'
-      style={{ background: `${backgroundColor}` }}>
+      style={{ background: `${backgroundColor}` }}
+    >
       <img src={imageSrc} alt="" />
       <div className='details'>
         <p className='title'>{title}</p>

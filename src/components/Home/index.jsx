@@ -32,6 +32,7 @@ function Home() {
           backgroundColor={'var(--low-opacity-yellow-n1)'}
         />
       </div>
+
       <div className='cards-wrapper'>
         <ChargesCard
           backgroundColor={'var(--low-opacity-red-n1)'}
@@ -52,6 +53,7 @@ function Home() {
           total={'10'}
         />
       </div>
+
       <div className='cards-wrapper'>
         <ClientsCard
           icon={DebtorClient}

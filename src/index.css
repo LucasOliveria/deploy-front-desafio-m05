@@ -25,6 +25,7 @@ html {
   --gray-n2: #3F3F55;
   --gray-n3: #747488;
   --gray-n4: #667085;
+  --gray-n5: #6E6E85;
   --blue-n1: #1fa8af;
   --red-n1: #971d1d;
   --red-n2: #E70000;
@@ -36,6 +37,7 @@ html {
   --modal-background-color: rgba(145, 154, 150, 0.3);
   --border-input: 1px solid #D0D5DD;
   --white: #ffffff;
+  overflow-x: hidden;
 }
 
 body {

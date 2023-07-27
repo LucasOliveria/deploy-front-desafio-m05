@@ -1,5 +1,6 @@
 import TableRow from '../TableRow';
 import './style.css';
+
 function ChargesCard({ title, total, textColor, backgroundColor }) {
   return (
     <div className='chargesCard'>

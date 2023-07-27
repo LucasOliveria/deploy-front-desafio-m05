@@ -17,19 +17,15 @@ function ClientsTable() {
   return (
     <div className="container-clients-table">
       <div className="utility-bar">
-
         <div className="icon-and-title">
           <img src={clientIconTable} alt="client icon" />
           <h2>Clientes</h2>
         </div>
-
         <div className="content-utilities">
           <button className='add-client-button' onClick={() => setShowModal(true)}>
             + Adicionar cliente
           </button>
-
           <img src={filterIcon} alt="filter icon " />
-
           <div className="search-input">
             <input type="text" name="search" id="" placeholder='Pesquisa' />
             <img src={searchIcon} alt="search icon" />

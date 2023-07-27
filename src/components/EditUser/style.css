@@ -23,6 +23,7 @@
     position: absolute;
     top: 24px;
     right: 25px;
+    cursor: pointer;
 }
 
 .editUser-modal form {

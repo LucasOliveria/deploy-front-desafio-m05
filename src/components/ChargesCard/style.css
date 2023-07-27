@@ -1,103 +1,131 @@
 .chargesCard {
-    width: 360px;
-    height: 397px;
-    border: none;
-    background-color: white;
-    box-shadow: 0 4px 4px 0 rgba(172, 217, 197, 0.25);
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
+  width: 305px;
+  background-color: calc(--white);
+  box-shadow: 0 4px 4px 0 #acd9c540;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 24px 0 32px 0;
 }
 
 .chargesCard .top {
-    height: 58px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(208, 206, 206, 0.322);
+  height: 58px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d0cece52;
 }
 
 .chargesCard .top h1 {
-    font-size: 18px;
-    margin-left: 51px;
-    color: var(--cinzas-cinza-2, #3F3F55);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 130%;
+  font-size: 1.8rem;
+  margin-left: 51px;
+  color: var(--gray-n2);
+}
+
+.chargesCard .top h1,
+.chargesCard .top .top-nmr h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.chargesCard .top h1,
+.chargesCard .top .top-nmr h3,
+.chargesCard .table thead th {
+  font-weight: 700;
 }
 
 .chargesCard .top .top-nmr {
-    width: 50px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    margin-right: 16.11px;
+  width: 50px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin-right: 16.11px;
 }
 
-.chargesCard .top .top-nmr h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 130%;
+.chargesCard .top .top-nmr h3,
+.chargesCard .table thead th {
+  font-size: 1.6rem;
 }
 
 .chargesCard .table thead {
-    height: 67.5px;
+  height: 67.5px;
 }
 
 .chargesCard .table thead th {
-    border-bottom: 1px solid rgba(208, 206, 206, 0.322);
-    color: var(--cinzas-cinza-2, #3F3F55);
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 50px;
-    letter-spacing: 0.08px;
+  border-bottom: 1px solid rgba(208, 206, 206, 0.322);
+  color: var(--gray-n2);
+  line-height: 50px;
+  letter-spacing: 0.08px;
 }
 
+.chargesCard .table thead th,
+.chargesCard .table tbody td,
+.chargesCard .bottom h3 {
+  font-family: 'Nunito', sans-serif;
+}
 
 .chargesCard .table th,
 .chargesCard .table td {
-    text-align: center;
+  text-align: center;
 }
 
 .chargesCard .table tbody {
-    height: 230px;
+  height: 230px;
 }
 
 .chargesCard .table tbody td {
-    border-bottom: 1px solid rgba(208, 206, 206, 0.322);
-    color: var(--neutrals-dark-medium, #6E6E85);
-    font-family: 'Nunito', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 40px;
-    letter-spacing: 0.07px;
+  border-bottom: 1px solid #d0cece52;
+  color: var(--gray-n5);
+  font-size: 1.4rem;
+  line-height: 40px;
+  letter-spacing: 0.07px;
+}
+
+.chargesCard .table tbody td,
+.chargesCard .bottom h3 {
+  font-weight: 400;
 }
 
 .chargesCard .bottom {
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .chargesCard .bottom h3 {
-    color: var(--principais-rosa-normal, #DA0175);
-    font-family: 'Nunito', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 130%;
-    text-decoration-line: underline;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
+  color: var(--pink-color);
+  font-size: 1.8rem;
+  text-decoration-line: underline;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) and (max-width: 1300px) {
+  .chargesCard .top h1 {
+    margin-left: 23px;
+  }
+
+  .chargesCard .top h1,
+  .chargesCard .bottom h3 {
+    font-size: 1.5rem;
+  }
+
+  .chargesCard .top .top-nmr {
+    width: 40px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  .chargesCard .top .top-nmr h3,
+  .chargesCard .table thead th {
+    font-size: 1.4rem;
+  }
+
+  .chargesCard .table tbody td {
+    font-size: 1.2rem;
+  }
 }
