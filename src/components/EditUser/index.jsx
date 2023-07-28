@@ -1,18 +1,26 @@
-import './style.css';
-import close from '../../assets/close.jpg';
-import eye from '../../assets/eye-off.svg';
-import SuccessRegistration from '../SuccesEditUser';
 import { useState } from 'react';
-import useDashboard from '../../hooks/useDashboard'; import { toast } from 'react-toastify';
-;
+import { toast } from 'react-toastify';
+import close from '../../assets/close.jpg';
+import eyeOff from '../../assets/eye-off.svg';
+import eyeOn from '../../assets/eye-on.svg';
+import successIcon from "../../assets/iconsucces.svg";
+import useDashboard from '../../hooks/useDashboard';
 import api from '../../services/api';
 import { getItem } from '../../utils/storage';
-function EditUser() {
+import SuccessRegistration from '../SuccesEditUser';
+import './style.css';
 
+function EditUser() {
   const [showPassword, setShowPassword] = useState(false);
+
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const [formErrors, setFormErrors] = useState({});
+
   const [successRegistration, setSuccessRegistration] = useState(false);
+
   const { formData, setFormData, setUser, user, setOpenEditUser } = useDashboard();
+
   const token = getItem('token');
 
 
@@ -84,17 +92,17 @@ function EditUser() {
             Authorization: `Bearer ${token}`
           }
         })
-      setUser(formData)
-      toast.update(id, { render: response.data, type: "success", isLoading: false, autoClose: 1500 });
+      setUser(formData);
+
+      toast.update(id, { render: response.data, type: "success", isLoading: false, autoClose: 1500, icon: ({ theme, type }) => <img src={successIcon} /> });
+
       setSuccessRegistration(true);
 
       return;
     } catch (error) {
-      console.log(error);
       toast.update(id, { render: error.response.data, type: "error", isLoading: false, autoClose: 1500 });
       return;
     }
-
 
   };
 
@@ -104,7 +112,6 @@ function EditUser() {
       setSuccessRegistration(false);
     }
   }
-
 
   return (
     <div className='editUser' onClick={handleCloseModal}>
@@ -186,7 +193,7 @@ function EditUser() {
                   onChange={handleChange}
                   className={formErrors.password ? 'error' : ''}
                 />
-                <img className='eye' src={eye} alt='eye' onClick={handleTogglePassword} />
+                <img className='eye' src={showPassword ? eyeOn : eyeOff} alt='eye' onClick={() => setShowPassword(!showPassword)} />
               </div>
 
               {formErrors.password && (
@@ -198,22 +205,20 @@ function EditUser() {
               Confirmar Senha*
               <div className='content-input-eye'>
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showConfirmPassword ? 'text' : 'password'}
                   name='confirmNewPassword'
                   id='confirmNewPassword'
                   value={formData.confirmNewPassword}
                   onChange={handleChange}
                   className={formErrors.confirmNewPassword ? 'error' : ''}
                 />
-                <img className='eye' src={eye} alt='eye' onClick={handleTogglePassword} />
+                <img className='eye' src={showConfirmPassword ? eyeOn : eyeOff} alt='eye' onClick={() => setShowConfirmPassword(!showConfirmPassword)} />
               </div>
               {formErrors.confirmNewPassword && (
                 <span className='error-message'>{formErrors.confirmNewPassword}</span>
               )}
             </label>
-            <div className='center-button'>
-              <button type='submit'>Aplicar</button>
-            </div>
+            <button type='submit'>Aplicar</button>
           </form>
         </div>)}
 

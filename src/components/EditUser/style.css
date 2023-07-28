@@ -1,133 +1,138 @@
 .editUser {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    background-color: #919a964d;
-    backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #919a964d;
+  backdrop-filter: blur(2px);
 }
 
 .editUser-modal {
-    width: 491px;
-    min-height: 623px;
-    background-color: white;
-    border-radius: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  width: 430px;
+  background-color: var(--white);
+  border-radius: 30px;
+}
 
-    transition: min-height 0.2s ease-in-out;
+.editUser-modal,
+.editUser-modal .content-input-eye {
+  position: relative;
 }
 
 .editUser-modal .close {
-    position: absolute;
-    top: 24px;
-    right: 25px;
-    cursor: pointer;
+  position: absolute;
+  top: 2.4rem;
+  right: 2.5rem;
+}
+
+.editUser-modal .close,
+.editUser-modal form button,
+.editUser-modal .password-label .eye {
+  cursor: pointer;
 }
 
 .editUser-modal form {
-    padding: 40px 56px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 25px;
 }
 
 .editUser-modal h1 {
-    color: var(--cinzas-cinza-1, #343447);
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 130%;
+  color: var(--dark-gray-bg-color);
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
 }
 
 .editUser-modal label {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    color: var(--gray-700, #344054);
-    font-family: 'Nunito', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 20px;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  color: var(--gray-n1);
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.editUser-modal label,
+.error-message {
+  font-size: 1.4rem;
+}
+
+.editUser-modal label,
+.editUser-modal form button {
+  font-family: 'Nunito', sans-serif;
 }
 
 .editUser-modal label input {
-    border-radius: 8px;
-    border: 1px solid var(--gray-300, #D0D5DD);
-    background: var(--white, #FFF);
-    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-    color: var(--gray-500, #667085);
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    padding: 10px 14px;
+  border-radius: 8px;
+  border: var(--border-input);
+  background-color: var(--white);
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  font-size: 1.6rem;
+  padding: 10px 14px;
+}
+
+.editUser-modal label input,
+.editUser-modal label .error-message {
+  font-family: 'Inter', sans-serif;
+}
+
+.editUser-modal label input,
+.editUser-modal form button,
+.editUser-modal label .error-message {
+  font-weight: 400;
+}
+
+.editUser-modal label input::placeholder {
+  color: var(--gray-n4);
 }
 
 .cpf-phone {
-    display: flex;
-    gap: 24px;
+  display: flex;
+  gap: 24px;
 }
 
 .cpf-phone label {
-    width: 178px;
+  width: 178px;
 }
 
 .editUser-modal form button {
-    margin-top: 16px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 160px;
-    height: 33px;
-    border-radius: 10px;
-    border: none;
-    background: var(--principais-rosa-normal, #DA0175);
-    font-family: 'Nunito', sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  margin-top: 16px;
+  color: var(--white);
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 33px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--pink-color);
+  font-size: 18px;
+  line-height: normal;
 }
 
-.center-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 16px;
-}
-
-
-.editUser-modal .content-input-eye {
-    position: relative;
+.editUser-modal form button:hover {
+  background-color: var(--hover-button);
 }
 
 .editUser-modal .password-label input {
-    padding-right: 30px;
-    width: 100%;
+  padding-right: 30px;
+  width: 100%;
 }
 
 .editUser-modal .password-label .eye {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .editUser-modal label input.error {
-    border: 1px solid var(--feedback-erro-normal, #E70000);
+  border: 1px solid var(--red-n2);
 
 }
 
 .editUser-modal label .error-message {
-    color: var(--feedback-erro-normal, #E70000);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-
+  color: var(--red-n2);
 }

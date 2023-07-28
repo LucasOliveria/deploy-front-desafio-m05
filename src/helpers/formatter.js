@@ -24,3 +24,23 @@ function splitNameAndLastName(name) {
   const nameArray = name.split(' ')
   return nameArray
 }
+
+export function formatPhoneNumber(num) {
+  let format = "xx x xxxx xxxx";
+  let numbers = String(num);
+
+  for (const number of numbers) {
+    format = format.replace('x', number)
+  }
+  return format
+}
+
+export function formatCpfNumber(num) {
+  let format = "xxx xxx xxx xx";
+  let numbers = String(num);
+
+  for (const number of numbers) {
+    format = format.replace('x', number)
+  }
+  return format
+}

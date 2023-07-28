@@ -19,11 +19,12 @@ function Dashboard({ children }) {
     try {
       const { data } = await api.get("/user", {
         headers: headers()
-      })
+      });
+
       setUser(data);
     } catch (error) {
       toast.error(error.response.data);
-      clearStorage()
+      clearStorage();
       setTimeout(() => navigateTo('/'), 1000)
     }
   }
@@ -32,6 +33,7 @@ function Dashboard({ children }) {
       const { data } = await api.get("/client", {
         headers: headers()
       });
+
       setClients(data);
     } catch (error) {
       return toast.error(error.response.data);

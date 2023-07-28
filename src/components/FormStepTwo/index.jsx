@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import eyeOff from '../../assets/eye-off.svg';
-import './style.css';
+import eyeOn from '../../assets/eye-on.svg';
+import successIcon from "../../assets/iconsucces.svg";
 import api from '../../services/api';
+import './style.css';
 
 function FormStepTwo({ setCurrentStep, signUpForm, setSignUpForm }) {
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ function FormStepTwo({ setCurrentStep, signUpForm, setSignUpForm }) {
         password: signUpForm.password
       });
 
-      toast.update(id, { render: "Cadastro realizado com sucesso!", type: "success", isLoading: false, autoClose: 1500 });
+      toast.update(id, { render: "Cadastro realizado com sucesso!", type: "success", isLoading: false, autoClose: 1500, icon: ({ theme, type }) => <img src={successIcon} /> });
 
       setCurrentStep(2);
     } catch (error) {
@@ -59,12 +61,12 @@ function FormStepTwo({ setCurrentStep, signUpForm, setSignUpForm }) {
       <h1>Escolha uma senha</h1>
       <label htmlFor="password">Senha*</label>
       <div className="content-password">
-        <img src={eyeOff} alt="eye off" onClick={() => setShowPassword(!showPassword)} />
+        <img src={showPassword ? eyeOn : eyeOff} alt="eye off" onClick={() => setShowPassword(!showPassword)} />
         <input type={showPassword ? "text" : "password"} name="password" value={signUpForm.password} id="password" autoComplete='on' onChange={(e) => handleChangeForm(e)} />
       </div>
       <label htmlFor="confirmPassword">Repita a senha*</label>
       <div className="content-password">
-        <img src={eyeOff} alt="eye off" onClick={() => setShowConfirmPassword(!showConfirmPassword)} />
+        <img src={showConfirmPassword ? eyeOn : eyeOff} alt="eye off" onClick={() => setShowConfirmPassword(!showConfirmPassword)} />
         <input type={showConfirmPassword ? "text" : "password"} name="confirmPassword" value={signUpForm.confirmPassword} id="confirmPassword" autoComplete='on' onChange={(e) => handleChangeForm(e)} />
       </div>
       <button >Finalizar cadastro</button>
