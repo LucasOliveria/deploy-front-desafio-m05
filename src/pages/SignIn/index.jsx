@@ -60,7 +60,7 @@ function SignIn() {
         </div>
       </aside>
       <main className='signin-container-main'>
-        <form onSubmit={handleSubmit} className='signin-form'>
+        <form onSubmit={handleSubmit} className='signin-form fade-in-left'>
           <h1 className='signin-form-title'>Faça seu login!</h1>
           <div className='signin-container-email'>
             <label htmlFor='email'>E-mail</label>

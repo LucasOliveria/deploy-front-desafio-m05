@@ -22,7 +22,7 @@ function FormStepOne({ setCurrentStep, signUpForm, setSignUpForm }) {
   }
 
   return (
-    <form className='form-signup'>
+    <form className='form-signup fade-in-left'>
       <h1>Adicione seus dados</h1>
       <label htmlFor="name">Nome*</label>
       <input type="text" name="name" value={signUpForm.name} id="name" placeholder='Digite seu nome' autoComplete='on' onChange={(e) => handleChangeForm(e)} />

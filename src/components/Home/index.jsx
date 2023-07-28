@@ -11,7 +11,7 @@ import './style.css';
 function Home() {
   return (
     <div className='HomeComponent'>
-      <div className='cards-wrapper'>
+      <div className='cards-wrapper fade-in'>
         <ChargesResume
           imageSrc={PaidChargesImage}
           title={'Cobranças Pagas'}
@@ -33,7 +33,7 @@ function Home() {
         />
       </div>
 
-      <div className='cards-wrapper'>
+      <div className='cards-wrapper fade-in'>
         <ChargesCard
           backgroundColor={'var(--low-opacity-red-n1)'}
           textColor={'var(--red-n1)'}
@@ -54,7 +54,7 @@ function Home() {
         />
       </div>
 
-      <div className='cards-wrapper'>
+      <div className='cards-wrapper fade-in'>
         <ClientsCard
           icon={DebtorClient}
           title={'Clientes Inadimplentes'}

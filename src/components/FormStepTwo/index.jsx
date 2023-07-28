@@ -57,7 +57,7 @@ function FormStepTwo({ setCurrentStep, signUpForm, setSignUpForm }) {
   }
 
   return (
-    <form onSubmit={handleSignUpUser} className='form-signup'>
+    <form onSubmit={handleSignUpUser} className='form-signup fade-in-left'>
       <h1>Escolha uma senha</h1>
       <label htmlFor="password">Senha*</label>
       <div className="content-password">

@@ -34,7 +34,7 @@ function ClientsTable() {
       </div>
 
       <div className="content-clients-table">
-        <table className='clients-table'>
+        <table className='clients-table fade-in'>
           <thead>
             <tr>
               <th>
