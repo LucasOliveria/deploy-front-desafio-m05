@@ -1,40 +1,50 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from "react-toastify";
 import clientIcon from "../../assets/client-icon-table.svg";
-import successIcon from "../../assets/iconsucces.svg";
 import closeIcon from "../../assets/icon-close.svg";
+import successIcon from "../../assets/iconsucces.svg";
 import useDashboard from '../../hooks/useDashboard';
 import api from "../../services/api";
 import { getZipCode } from '../../services/getZipCode';
 import { getItem } from "../../utils/storage";
 import './style.css';
 
-function ClientsAddModal({ onClose }) {
+function ClientsEditModal({ onClose }) {
+  const token = getItem("token");
+
   const [errorName, setErrorName] = useState('');
+
   const [errorEmail, setErrorEmail] = useState('');
+
   const [errorCpf, setErrorCpf] = useState('');
+
   const [errorPhone, setErrorPhone] = useState('');
-  const { clients, setClients } = useDashboard();
+
+  const { clients, setClients, charges, setCharges, clientDetails, setClientDetails } = useDashboard();
+
+  const { client: clientCurrent } = clientDetails;
 
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    cpf: '',
-    phone: '',
-    address: '',
-    complement: '',
-    zipCode: '',
-    district: '',
-    city: '',
-    uf: '',
+    name: clientCurrent.name,
+    email: clientCurrent.email,
+    cpf: clientCurrent.cpf,
+    phone: clientCurrent.phone,
+    address: clientCurrent.public_place || "",
+    complement: clientCurrent.complement || "",
+    zipCode: clientCurrent.zip_code || "",
+    district: clientCurrent.district || "",
+    city: clientCurrent.city || "",
+    uf: clientCurrent.uf || "",
   });
-  const token = getItem("token");
 
   const handleChangeForm = (e) => {
     if (e.target.name === 'cpf' && isNaN(e.target.value)) {
       return;
     }
     if (e.target.name === 'phone' && isNaN(e.target.value)) {
+      return;
+    }
+    if (e.target.name === 'zipCode' && isNaN(e.target.value)) {
       return;
     }
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -105,7 +115,6 @@ function ClientsAddModal({ onClose }) {
       return
     }
 
-
     const newClient = {
       name: form.name,
       email: form.email,
@@ -118,10 +127,11 @@ function ClientsAddModal({ onClose }) {
       city: form.city,
       uf: form.uf,
     }
+
     const id = toast.loading("Por favor, aguarde...");
 
     try {
-      const response = await api.post("/client", {
+      const response = await api.put(`/client/${clientCurrent.id}`, {
         ...newClient
       }, {
         headers: {
@@ -129,17 +139,47 @@ function ClientsAddModal({ onClose }) {
         }
       });
 
-      setClients([...clients, response.data]);
+      const updatedClient = response.data;
+
+      const localClients = [...clients];
+
+      const clientForUpdate = localClients.find((client) => client.id === updatedClient.id);
+
+      clientForUpdate.name = updatedClient.name
+      clientForUpdate.email = updatedClient.email
+      clientForUpdate.cpf = updatedClient.cpf
+      clientForUpdate.phone = updatedClient.phone
+      clientForUpdate.public_place = updatedClient.public_place
+      clientForUpdate.complement = updatedClient.complement
+      clientForUpdate.zip_code = updatedClient.zip_code
+      clientForUpdate.district = updatedClient.district
+      clientForUpdate.city = updatedClient.city
+      clientForUpdate.uf = updatedClient.uf
+
+      setClients(localClients);
+
+      const localCharges = [...charges];
+
+      const updatedClientCharges = localCharges.filter((charge) => charge.client_id === updatedClient.id)
+
+      for (const updatedClientCharge of updatedClientCharges) {
+        updatedClientCharge.client_name = updatedClient.name
+
+      }
+
+      setCharges(localCharges);
+
+      setClientDetails({ ...clientDetails, client: { ...updatedClient } });
 
       handleBtnCancel();
 
-      toast.update(id, { render: "Cadastro concluído com sucesso", type: "success", isLoading: false, autoClose: 1500, position: "bottom-right", icon: ({ theme, type }) => <img src={successIcon} /> });
+      toast.update(id, { render: "Cliente atualizado com sucesso", type: "success", isLoading: false, autoClose: 1500, position: "bottom-right", icon: ({ theme, type }) => <img src={successIcon} /> });
 
     } catch (error) {
       if (error.response.data.includes('e-mail não está')) {
         setErrorEmail('O campo e-mail não está em um formato válido');
       }
-      if (error.response.data.includes('com este e-mail')) {
+      if (error.response.data.includes('O email informado já está cadastrado.')) {
         setErrorEmail('E-mail já cadastrado');
       }
       if (error.response.data.includes('CPF')) {
@@ -160,7 +200,7 @@ function ClientsAddModal({ onClose }) {
         <div className="add-modal-header">
           <div className="add-modal-row">
             <img src={clientIcon} alt="Icone Cliente" />
-            <h1>Cadastro de Cliente</h1>
+            <h1>Editar Cliente</h1>
           </div>
           <img src={closeIcon} alt="Fechar modal" onClick={onClose} className='add-modal-close' />
         </div>
@@ -226,4 +266,4 @@ function ClientsAddModal({ onClose }) {
   )
 }
 
-export default ClientsAddModal;
+export default ClientsEditModal;

@@ -1,0 +1,16 @@
+.container-client-details {
+  padding: 0 80px;
+}
+
+.icon-and-title {
+  display: flex;
+  align-items: center;
+}
+
+.icon-and-title h2 {
+  margin-left: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--gray-n2);
+}

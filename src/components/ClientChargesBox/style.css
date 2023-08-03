@@ -1,0 +1,112 @@
+.container-client-charges {
+  margin: 24px 0;
+  padding: 24px 27px;
+  border-radius: 30px;
+  background-color: var(--white);
+}
+
+.title-client-charges {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-client-charges h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.title-client-charges h3,
+.table-client-charges thead tr th {
+  font-weight: 700;
+  color: var(--gray-n2);
+}
+
+.title-client-charges h3,
+.title-client-charges button {
+  font-size: 1.8rem;
+}
+
+.title-client-charges button {
+  width: 252px;
+  height: 33px;
+  border-radius: 10px;
+  background-color: var(--pink-color);
+  border: none;
+  color: var(--light-gray-bg-color);
+  cursor: pointer;
+}
+
+.title-client-charges button,
+.table-client-charges thead tr th,
+.table-client-charges tbody tr td,
+.edit-or-delete p {
+  font-family: 'Nunito', sans-serif;
+}
+
+.title-client-charges button,
+.table-client-charges tbody tr td {
+  font-weight: 400;
+}
+
+.title-client-charges button:hover {
+  background-color: var(--hover-button);
+}
+
+.content-table-client-charges {
+  min-width: 345px;
+  max-height: 260px;
+  margin-top: 12px;
+  overflow: auto;
+}
+
+.table-client-charges {
+  width: 100%;
+  min-width: 900px;
+  text-align: justify;
+  border-collapse: collapse;
+  position: relative;
+}
+
+.table-client-charges thead {
+  position: sticky;
+  top: 0;
+  background-color: var(--white);
+}
+
+.table-client-charges thead tr th {
+  height: 66px;
+  font-size: 1.6rem;
+}
+
+.table-client-charges thead tr th img {
+  display: inline-block;
+  margin-bottom: -8px;
+}
+
+.table-client-charges tbody tr td {
+  height: 60px;
+  font-size: 1.4rem;
+  color: var(--gray-n5);
+}
+
+.table-client-charges tbody tr {
+  border-top: 1px solid #EFF0F6;
+}
+
+.edit-or-delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.edit-or-delete p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-n3);
+}
+
+.edit-or-delete .red-delete {
+  color: var(--red-n3);
+}

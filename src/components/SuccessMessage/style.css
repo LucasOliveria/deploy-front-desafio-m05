@@ -16,6 +16,13 @@
   background-color: var(--gray-container-steps);
 }
 
+.success-message h2 {
+  font-family: 'Montserrat';
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--dark-gray-bg-color);
+}
+
 .container-success button {
   all: unset;
   align-self: center;

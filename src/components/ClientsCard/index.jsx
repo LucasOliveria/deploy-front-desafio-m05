@@ -1,5 +1,6 @@
+import { formatTotalNumber } from '../../helpers/formatter';
 import './style.css';
-function ClientsCard({ icon, title, total, textColor, backgroundColor }) {
+function ClientsCard({ icon, title, total, textColor, backgroundColor, body }) {
   return (
     <div className='client-card'>
       <div className='top'>
@@ -13,40 +14,36 @@ function ClientsCard({ icon, title, total, textColor, backgroundColor }) {
           <h3 style={{
             color: `${textColor}`
           }}
-          >{total}</h3>
+          >{formatTotalNumber(total)}</h3>
         </div>
       </div>
-      <table className='table'>
-        <thead>
-          <tr >
-            <th>Clientes</th>
-            <th>ID do clie.</th>
-            <th>CPF</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className='first'>Cameron Williamson</td>
-            <td className='second'>223456787</td>
-            <td className='third'>041.477.456-56</td>
-          </tr>
-          <tr>
-            <td>Cameron Williamson</td>
-            <td>223456787</td>
-            <td>041.477.456-56</td>
-          </tr>
-          <tr>
-            <td>Cameron Williamson</td>
-            <td>223456787</td>
-            <td>041.477.456-56</td>
-          </tr>
-          <tr>
-            <td>Cameron Williamson</td>
-            <td>223456787</td>
-            <td>041.477.456-56</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className='content-clientscard-table'>
+        <table className='table'>
+          <thead>
+            <tr >
+              <th>Clientes</th>
+              <th>ID do clie.</th>
+              <th>CPF</th>
+            </tr>
+          </thead>
+          <tbody>
+            {body?.length ? body?.length && body?.slice(0, 4).map((client) => (
+              <tr key={client.id}>
+                <td className='first'>{client.name}</td>
+                <td className='second'>{client.id}</td>
+                <td className='third'>{client.cpf}</td>
+              </tr>
+            ))
+              :
+              <tr>
+                <td className='no-content'></td>
+                <td className='no-content'></td>
+                <td className='no-content'></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
       <div className='bottom'>
         <h3>Ver todos</h3>
       </div>

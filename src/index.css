@@ -23,15 +23,17 @@ html {
   --gray-container-steps: #F0F0F5;
   --green-steps: #0E8750;
   --hover-button: #b60362;
-  --next-step: #DEDEE9;
   --gray-n1: #344054;
   --gray-n2: #3F3F55;
   --gray-n3: #747488;
   --gray-n4: #667085;
   --gray-n5: #6E6E85;
+  --gray-n6: #C8C8D7;
+  --next-step: #DEDEE9;
   --blue-n1: #1fa8af;
   --red-n1: #971d1d;
   --red-n2: #E70000;
+  --red-n3: #AE1100;
   --yellow-n1: #c5a505;
   --low-opacity-blue-n1: #1fa8af1c;
   --low-opacity-red-n1: #971d1d1c;
@@ -51,19 +53,18 @@ body {
 .Toastify__toast-theme--colored.Toastify__toast--error,
 .Toastify__toast-theme--colored.Toastify__toast--success {
   width: 33rem;
-  height: 5.4rem;
   border-radius: 1rem;
 }
 
 .Toastify__toast-theme--colored.Toastify__toast--info,
 .Toastify__toast-theme--colored.Toastify__toast--error {
   background-color: var(--soft-pink) !important;
-  color: #AE1100 !important;
+  color: var(--red-n3) !important;
 
 }
 
 .Toastify__close-button>svg {
-  color: #AE1100;
+  color: var(--red-n3);
 
 }
 
@@ -74,4 +75,19 @@ body {
 
 .Toastify__toast-container {
   margin-right: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--pink-color);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--light-gray-bg-color);
+
 }

@@ -1,0 +1,121 @@
+.charges-container-table {
+  width: 100%;
+  padding: 0 80px;
+}
+
+.charges-utility-bar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.charges-icon-and-title {
+  display: flex;
+  align-items: center;
+}
+
+.charges-icon-and-title h2 {
+  margin-left: 16px;
+  font-family: Montserrat;
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+
+.charges-icon-and-title h2,
+.charges-table thead {
+  color: var(--gray-n2);
+}
+
+.charges-content-utilities {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.charges-search-input input {
+  border-radius: 10px;
+}
+
+.charges-search-input>input::placeholder,
+.charges-table tbody {
+  line-height: normal;
+  font-size: 1.8rem;
+  color: var(--gray-n3);
+}
+
+.charges-search-input>input::placeholder,
+.charges-content-table thead,
+.charges-content-table tbody {
+  font-family: Nunito;
+}
+
+.charges-search-input>input::placeholder,
+.charges-table tbody {
+  font-weight: 400;
+}
+
+.charges-search-input {
+  position: relative;
+}
+
+.charges-search-input>input {
+  width: 318px;
+  height: 39px;
+  padding-left: 8px;
+  border: none;
+  box-shadow: 4px 7px 6px #da01750d;
+}
+
+.charges-search-input img[alt="search icon"] {
+  position: absolute;
+  right: 8px;
+  top: 7.5px;
+}
+
+.charges-content-table {
+  min-width: 345px;
+  background-color: var(--white);
+  border-radius: 30px;
+  margin-top: 24px;
+  padding: 0px 23px 12px 23px;
+  overflow-x: auto;
+  max-height: 400px;
+}
+
+.charges-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  position: relative;
+}
+
+.charges-table thead {
+  height: 66px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
+}
+
+.charges-table thead tr,
+.charges-table tbody tr {
+  text-align: justify;
+}
+
+.charges-table thead tr th img {
+  display: inline-block;
+  margin-bottom: -8px;
+}
+
+.charges-table tbody {
+  font-size: 1.4rem;
+  line-height: 40px;
+  letter-spacing: 0.07px;
+}
+
+.charges-table tbody tr {
+  height: 60px;
+  border-top: 1px solid #EFF0F6;
+}

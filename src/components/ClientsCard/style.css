@@ -22,6 +22,10 @@
   border-bottom: 1px solid #d0cece52;
 }
 
+.client-card .table tbody .no-content {
+  border: none;
+}
+
 .client-card .top .top-left {
   display: flex;
   margin-left: 24px;
@@ -62,6 +66,12 @@
 .client-card .top .top-nmr h3,
 .client-card .table thead th {
   font-size: 1.6rem;
+}
+
+.content-clientscard-table {
+  display: flex;
+  flex-direction: column;
+  height: 304px;
 }
 
 .client-card .table thead tr th {
@@ -120,6 +130,7 @@
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) and (max-width: 1300px) {

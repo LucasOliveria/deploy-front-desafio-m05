@@ -10,7 +10,7 @@
 }
 
 .editUser-modal {
-  width: 430px;
+  width: 440px;
   background-color: var(--white);
   border-radius: 30px;
 }
@@ -35,7 +35,7 @@
 .editUser-modal form {
   display: flex;
   flex-direction: column;
-  padding: 40px 25px;
+  padding: 40px 35px;
 }
 
 .editUser-modal h1 {

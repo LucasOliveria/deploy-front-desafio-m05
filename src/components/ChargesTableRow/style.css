@@ -1,0 +1,39 @@
+.ChargesTableRow .description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.ChargesTableRow .description .description-text {
+  flex-grow: 1;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 160px;
+}
+
+.ChargesTableRow .icon-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  height: 60px;
+  padding-right: 15px;
+  font-family: Nunito;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--gray-n3);
+}
+
+.ChargesTableRow .icon-div .icon-text.delete {
+  color: var(--red-n3);
+}
+
+.ChargesTableRow .icon-div .icon-img {
+  height: 16px;
+  width: 16px;
+}

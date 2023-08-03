@@ -18,15 +18,30 @@
   text-align: center;
 }
 
+.titles {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.caption {
+  display: flex;
+  gap: 16px;
+  color: var(--gray-n3);
+}
+
+.caption,
 .Header .header-secondary-title {
   font-family: 'Inter';
   font-size: 1.6rem;
   font-weight: 400;
+}
+
+.Header .header-secondary-title {
   line-height: 2.4rem;
-  align-self: end;
   color: var(--green-steps);
-  padding-left: 70px;
-  margin-bottom: 4px;
 }
 
 .Header .header-user-menu {

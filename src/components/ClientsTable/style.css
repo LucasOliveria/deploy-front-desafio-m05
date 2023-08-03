@@ -1,6 +1,6 @@
 .container-clients-table {
   width: 100%;
-  padding: 0 104px;
+  padding: 0 80px;
 }
 
 .utility-bar {
@@ -82,8 +82,9 @@
   color: var(--gray-n3);
 }
 
-img[alt="filter icon "],
-.add-client-button {
+img[alt="filter icon"],
+.add-client-button,
+img[alt="change order"] {
   cursor: pointer;
 }
 
@@ -95,10 +96,10 @@ img[alt="search icon"] {
 
 .content-clients-table {
   min-width: 345px;
-  background-color: #ffffff;
+  background-color: var(--white);
   border-radius: 30px;
   margin-top: 24px;
-  padding: 12px 23px;
+  padding: 0 23px 12px 23px;
   overflow-x: auto;
   max-height: 400px;
 }
@@ -107,19 +108,25 @@ img[alt="search icon"] {
   width: 100%;
   border-collapse: collapse;
   min-width: 900px;
+  position: relative;
 }
 
 .clients-table thead {
+  height: 66px;
   font-size: 1.6rem;
   font-weight: 700;
-  line-height: 50px;
-  letter-spacing: 0.08px;
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
 }
 
-.clients-table thead,
-.clients-table tbody tr,
-.clients-table thead tr th:first-child {
-  height: 50px;
+.clients-table thead tr th img {
+  display: inline-block;
+  margin-bottom: -8px;
+}
+
+.clients-table tbody tr {
+  height: 60px;
 }
 
 .clients-table thead tr,
@@ -139,8 +146,13 @@ img[alt="search icon"] {
   border-top: 1px solid #EFF0F6;
 }
 
-.clients-table thead tr th:first-child {
-  display: flex;
-  gap: 4px;
-  align-items: center;
+.rotate {
+  transform: rotate(0deg);
+  transition: all 0.5s;
+
+}
+
+.rotate-reverse {
+  transform: rotate(180deg);
+  transition: all 0.5s;
 }

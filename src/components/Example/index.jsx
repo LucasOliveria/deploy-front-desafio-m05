@@ -2,8 +2,8 @@ import './style.css';
 
 function Example() {
   return (
-    <main>
-      <h1>Example</h1>
+    <main >
+      <h1>Hello World</h1>
     </main>
   )
 }

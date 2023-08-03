@@ -13,11 +13,11 @@
 }
 
 .add-modal-form {
-  width: 450px;
+  width: 440px;
   display: flex;
   flex-direction: column;
   background-color: var(--white);
-  padding: 15px 35px;
+  padding: 15px 25px;
   border-radius: 30px;
   position: relative;
 }

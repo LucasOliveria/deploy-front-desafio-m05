@@ -1,5 +1,4 @@
-import { createContext } from "react";
-import { useState } from "react";
+import { createContext, useState } from "react";
 
 export const dashboardContext = createContext({});
 
@@ -24,6 +23,10 @@ function DashboardContextProvider({ children }) {
   });
 
   const [clients, setClients] = useState([]);
+  const [charges, setCharges] = useState([]);
+  const [chargesSummary, setChargesSummary] = useState({});
+
+  const [clientDetails, setClientDetails] = useState({});
 
   return (
     <dashboardContext.Provider value={{
@@ -34,7 +37,13 @@ function DashboardContextProvider({ children }) {
       openEditUser,
       setOpenEditUser,
       formData,
-      setFormData
+      setFormData,
+      chargesSummary,
+      setChargesSummary,
+      clientDetails,
+      setClientDetails,
+      charges,
+      setCharges
     }}>
       {children}
     </dashboardContext.Provider>

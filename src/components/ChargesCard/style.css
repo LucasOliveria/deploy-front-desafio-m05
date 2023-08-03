@@ -1,6 +1,6 @@
 .chargesCard {
   width: 305px;
-  background-color: calc(--white);
+  background-color: var(--white);
   box-shadow: 0 4px 4px 0 #acd9c540;
   border-radius: 30px;
   display: flex;
@@ -14,6 +14,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.chargesCard .top,
+.chargesCard .table thead th,
+.chargesCard .table tbody td {
   border-bottom: 1px solid #d0cece52;
 }
 
@@ -49,12 +54,18 @@
   font-size: 1.6rem;
 }
 
+.content-chargeCard-table {
+  display: flex;
+  flex-direction: column;
+  height: 305px;
+}
+
 .chargesCard .table thead {
+  text-align: justify;
   height: 67.5px;
 }
 
 .chargesCard .table thead th {
-  border-bottom: 1px solid rgba(208, 206, 206, 0.322);
   color: var(--gray-n2);
   line-height: 50px;
   letter-spacing: 0.08px;
@@ -71,21 +82,19 @@
   text-align: center;
 }
 
-.chargesCard .table tbody {
-  height: 230px;
-}
-
 .chargesCard .table tbody td {
-  border-bottom: 1px solid #d0cece52;
   color: var(--gray-n5);
   font-size: 1.4rem;
-  line-height: 40px;
   letter-spacing: 0.07px;
 }
 
 .chargesCard .table tbody td,
 .chargesCard .bottom h3 {
   font-weight: 400;
+}
+
+.chargesCard .table tbody .no-content {
+  border: none;
 }
 
 .chargesCard .bottom {
@@ -102,6 +111,7 @@
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) and (max-width: 1300px) {
@@ -127,5 +137,7 @@
 
   .chargesCard .table tbody td {
     font-size: 1.2rem;
+    word-wrap: break-word;
+    min-width: 80px;
   }
 }

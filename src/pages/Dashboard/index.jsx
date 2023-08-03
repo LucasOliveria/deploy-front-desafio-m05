@@ -11,7 +11,7 @@ import { clearStorage } from '../../utils/storage';
 import './style.css';
 
 function Dashboard({ children }) {
-  const { setUser, setClients, openEditUser } = useDashboard();
+  const { setUser, setClients, openEditUser, setChargesSummary, chargesSummary, setCharges } = useDashboard();
 
   const navigateTo = useNavigate()
 
@@ -28,6 +28,7 @@ function Dashboard({ children }) {
       setTimeout(() => navigateTo('/'), 1000)
     }
   }
+
   async function getClients() {
     try {
       const { data } = await api.get("/client", {
@@ -39,9 +40,41 @@ function Dashboard({ children }) {
       return toast.error(error.response.data);
     }
   }
+  async function getCharges() {
+
+    try {
+      const { data } = await api.get('/charge', {
+        headers: headers()
+      });
+      setCharges(data);
+      setFilteredClients(filtered);
+    } catch (error) {
+
+    }
+  }
+
+
+  async function getChargesSummary() {
+    try {
+      const { data } = await api.get("/charges/bystatus", {
+        headers: headers()
+      });
+
+      setChargesSummary(data);
+    } catch (error) {
+      toast.error(error.response.data);
+    }
+  }
+
   useEffect(() => {
     getUser()
     getClients();
+    getCharges();
+  }, []);
+
+  useEffect(() => {
+    getChargesSummary();
+
   }, []);
 
   return (
