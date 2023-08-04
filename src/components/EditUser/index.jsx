@@ -42,10 +42,6 @@ function EditUser() {
     }));
   }
 
-  const handleTogglePassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
   const validateForm = () => {
     const errors = {};
 
@@ -132,7 +128,6 @@ function EditUser() {
               <input
                 type='text'
                 name='name'
-                id='name'
                 placeholder='Digite seu nome'
                 value={formData.name}
                 onChange={handleChange}
@@ -145,7 +140,6 @@ function EditUser() {
               <input
                 type='email'
                 name='email'
-                id='email'
                 placeholder='Digite seu E-mail'
                 value={formData.email}
                 onChange={handleChange}
@@ -160,7 +154,6 @@ function EditUser() {
                 <input
                   type="text"
                   name="cpf"
-                  id="cpf"
                   maxLength={11}
                   minLength={11}
                   placeholder='Digite seu CPF'
@@ -173,7 +166,6 @@ function EditUser() {
                 <input
                   type="text"
                   name="phone"
-                  id="phone"
                   maxLength={11}
                   minLength={11}
                   placeholder='Digite seu Telefone'
@@ -188,7 +180,6 @@ function EditUser() {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   name='password'
-                  id='password'
                   value={formData.password}
                   onChange={handleChange}
                   className={formErrors.password ? 'error' : ''}
@@ -207,7 +198,6 @@ function EditUser() {
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
                   name='confirmNewPassword'
-                  id='confirmNewPassword'
                   value={formData.confirmNewPassword}
                   onChange={handleChange}
                   className={formErrors.confirmNewPassword ? 'error' : ''}

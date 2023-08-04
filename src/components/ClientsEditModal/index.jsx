@@ -20,7 +20,7 @@ function ClientsEditModal({ onClose }) {
 
   const [errorPhone, setErrorPhone] = useState('');
 
-  const { clients, setClients, charges, setCharges, clientDetails, setClientDetails } = useDashboard();
+  const { clients, setClients, charges, setCharges, clientDetails, setClientDetails, setHomeModifier } = useDashboard();
 
   const { client: clientCurrent } = clientDetails;
 
@@ -164,12 +164,13 @@ function ClientsEditModal({ onClose }) {
 
       for (const updatedClientCharge of updatedClientCharges) {
         updatedClientCharge.client_name = updatedClient.name
-
       }
 
       setCharges(localCharges);
 
       setClientDetails({ ...clientDetails, client: { ...updatedClient } });
+
+      setHomeModifier(updatedClient);
 
       handleBtnCancel();
 

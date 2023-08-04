@@ -9,11 +9,12 @@ import api from '../../services/api';
 import { headers } from '../../utils/headers';
 import { clearStorage } from '../../utils/storage';
 import './style.css';
+import NewChargeModal from '../../components/NewChargeModal';
 
 function Dashboard({ children }) {
-  const { setUser, setClients, openEditUser, setChargesSummary, chargesSummary, setCharges } = useDashboard();
+  const { setUser, setClients, openEditUser, setChargesSummary, setCharges, openNewChargeModal, homeModifier } = useDashboard();
 
-  const navigateTo = useNavigate()
+  const navigateTo = useNavigate();
 
   async function getUser() {
     try {
@@ -53,7 +54,6 @@ function Dashboard({ children }) {
     }
   }
 
-
   async function getChargesSummary() {
     try {
       const { data } = await api.get("/charges/bystatus", {
@@ -74,8 +74,7 @@ function Dashboard({ children }) {
 
   useEffect(() => {
     getChargesSummary();
-
-  }, []);
+  }, [homeModifier]);
 
   return (
     <div className='Dashboard'>
@@ -87,6 +86,7 @@ function Dashboard({ children }) {
         {children}
       </main>
       {openEditUser && <EditUser />}
+      {openNewChargeModal && <NewChargeModal />}
     </div>
   )
 }

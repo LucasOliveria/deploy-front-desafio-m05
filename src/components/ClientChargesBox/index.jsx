@@ -1,18 +1,16 @@
-import { useRef } from 'react';
 import changeOrder from "../../assets/change-order.svg";
 import useDashboard from "../../hooks/useDashboard";
 import ChargesTableRow from "../ChargesTableRow";
-import NewChargeModal from '../NewChargeModal';
 import './style.css';
 
 function ClientChargesBox() {
-  const { clientDetails } = useDashboard();
+  const { clientDetails, handleNewChargeModalOpen } = useDashboard();
 
   const { client, charges } = clientDetails;
 
-  const newChargeModalRef = useRef(null);
-
-  const handleModalOpen = () => newChargeModalRef.current.showModal();
+  const handleModalOpen = () => {
+    handleNewChargeModalOpen(client)
+  };
 
   return (
     <div className="container-client-charges fade-in">
@@ -56,7 +54,6 @@ function ClientChargesBox() {
           </tbody>
         </table>
       </div>
-      <NewChargeModal newChargeRef={newChargeModalRef} client={client} />
     </div >
   )
 }

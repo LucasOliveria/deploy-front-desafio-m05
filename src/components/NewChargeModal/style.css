@@ -1,23 +1,28 @@
-.NewChargeModal::backdrop {
+.NewChargeModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100vw - 108px);
+  height: 100vh;
+  position: fixed;
+  left: 108px;
+  background-color: #919a964d;
   backdrop-filter: blur(2px);
 }
 
-.NewChargeModal {
-  outline: none;
-  border: unset;
-  font-weight: normal;
-  font-family: 'Nunito';
-  width: 600px;
-  height: 767px;
-  margin: auto;
-  border-radius: 30px;
-  padding: 28px 24px;
-}
-
-.NewChargeModal .dialog-inner-wrapper{
+.NewChargeModal .dialog-inner-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  gap: 12px;
+  font-weight: normal;
+  line-height: 2.5rem;
+  font-size: 1.6rem;
+  font-family: 'Nunito';
+  width: 450px;
+  margin: auto;
+  border-radius: 30px;
+  padding: 15px 24px;
+  background-color: var(--white);
 }
 
 .NewChargeModal .form-header {
@@ -25,11 +30,11 @@
   flex-direction: column;
 }
 
-.NewChargeModal .title-div{
+.NewChargeModal .title-div {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
-  padding-left: 32px;
 }
 
 .NewChargeModal .title {
@@ -43,7 +48,6 @@
 
 .NewChargeModal .x-close-button {
   height: 15px;
-  align-self: flex-end;
   cursor: pointer;
 }
 
@@ -51,23 +55,22 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 23px 32px;
   gap: 8px;
 }
 
 .NewChargeModal .new-charge-form input,
-.NewChargeModal .new-charge-form textarea{
+.NewChargeModal .new-charge-form textarea {
   outline: none;
   font-family: 'Nunito';
   font-size: 16px;
-  border: var(--border-input) ;
+  border: var(--border-input);
   border-radius: 8px;
   padding: 10px 16px;
   width: 100%;
 }
 
 .NewChargeModal .new-charge-form input::placeholder,
-.NewChargeModal .new-charge-form textarea::placeholder{
+.NewChargeModal .new-charge-form textarea::placeholder {
   color: var(--gray-n3);
   font-size: 18px;
   font-style: normal;
@@ -75,12 +78,12 @@
   line-height: 24px;
 }
 
-.NewChargeModal .double-input-div{
+.NewChargeModal .double-input-div {
   display: flex;
   gap: 24px;
 }
 
-.NewChargeModal .double-input-div .double-input-inner-div{
+.NewChargeModal .double-input-div .double-input-inner-div {
   width: 50%;
   position: relative;
   line-height: normal;
@@ -89,22 +92,28 @@
   gap: 4px;
 }
 
-.NewChargeModal .radio-div {
+.NewChargeModal .double-input-div .double-input-inner-div input {
+  height: 44px;
 }
 
-.NewChargeModal .radio-div .radio-inner-div{
+.NewChargeModal .radio-div {
+  margin-bottom: 40px;
+}
+
+.NewChargeModal .radio-div .radio-inner-div {
   display: flex;
   align-items: center;
   gap: 16px;
   font-size: 16px;
   border-radius: 10px;
   background: var(--gray-container-steps);
-  padding: 12px 16px;
-  margin-bottom:8px ;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
 }
 
 
-.NewChargeModal .radio-div .radio-icon-background{
+.NewChargeModal .radio-div .radio-icon-background {
   position: absolute;
   display: flex;
   border-radius: 50%;
@@ -113,26 +122,26 @@
   background-size: cover;
 }
 
-.NewChargeModal .radio-div .radio-checked-icon{
+.NewChargeModal .radio-div .radio-checked-icon {
   margin: auto;
   width: 13px;
-  height:11px;
+  height: 11px;
   z-index: 1;
 }
 
-.NewChargeModal .radio-div .radio-icon-background.checked{
+.NewChargeModal .radio-div .radio-icon-background.checked {
   background-color: var(--green-steps);
 }
 
-.NewChargeModal .radio-div .radio-icon-background.unchecked{
+.NewChargeModal .radio-div .radio-icon-background.unchecked {
   background-color: var(--gray-n6);
 }
 
-.NewChargeModal .radio-div label{
+.NewChargeModal .radio-div label {
   cursor: pointer;
 }
 
-.NewChargeModal .radio-div input[type='radio']{
+.NewChargeModal .radio-div input[type='radio'] {
   opacity: 0;
   z-index: 1;
   width: 24px;
@@ -143,10 +152,11 @@
 .NewChargeModal .buttons-div {
   width: 100%;
   display: flex;
+  gap: 10px;
   flex-grow: 1;
 }
 
-.NewChargeModal .buttons-div button{
+.NewChargeModal .buttons-div button {
   border: none;
   border-radius: 10px;
   width: 50%;
@@ -175,11 +185,14 @@
 .NewChargeModal .new-charge-form input.error {
   border: 1px solid var(--red-n2);
 }
+
 .NewChargeModal .new-charge-form textarea.error {
   border: 1px solid var(--red-n2);
 }
 
-.NewChargeModal .new-charge-form span.error{
+.NewChargeModal .new-charge-form span.error {
   color: var(--red-n2);
   line-height: normal;
+  letter-spacing: normal;
+  font-size: 1.3rem;
 }

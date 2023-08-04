@@ -1,6 +1,5 @@
 
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import changeOrder from "../../assets/change-order.svg";
 import clientIconTable from "../../assets/client-icon-table.svg";
 

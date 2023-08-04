@@ -1,24 +1,25 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { toast } from "react-toastify";
 import BlankChargeIcon from '../../assets/blank-charge.svg';
 import CheckedIcon from '../../assets/checked-icon.svg';
 import CloseIcon from "../../assets/icon-close.svg";
 import SuccessIcon from "../../assets/iconsucces.svg";
 import { formatCurrencyInput, formatCurrencyToCents, formatDate } from '../../helpers/formatter';
+import useDashboard from '../../hooks/useDashboard';
 import api from '../../services/api';
 import { headers } from '../../utils/headers';
 import './style.css';
-import useDashboard from '../../hooks/useDashboard';
 
-function NewChargeModal({ newChargeRef, client,
-  incomeCharge = { description: '', due_date: '', value: '', status: 'pago' },
-  editing = false }) {
-
-  const { clientDetails, setClientDetails, setCharges } = useDashboard()
+function NewChargeModal() {
+  const { clientDetails, setClientDetails, setCharges, newChargeClient: client, editingCharge: incomeCharge, isEditingCharge: editing,
+    handleNewChargeModalClose, clients, setClients, setHomeModifier } = useDashboard()
+  const location = useLocation()
+  const opennedLocation = useRef(location.pathname)
 
   const [description, setDescription] = useState(incomeCharge.description)
   const [dueDate, setDueDate] = useState(incomeCharge.due_date ? formatDate(incomeCharge.due_date, "yyyy-MM-dd") : '')
-  const [value, setValue] = useState(`R$ ${incomeCharge.value}`)
+  const [value, setValue] = useState(formatCurrencyInput(`R$ ${incomeCharge.value}`, incomeCharge.value))
   const [status, setStatus] = useState(incomeCharge.status)
 
   const [descriptionError, setDescriptionError] = useState(false)
@@ -91,6 +92,19 @@ function NewChargeModal({ newChargeRef, client,
 
         const { data } = await api.post('/charge', newCharge, { headers: headers() })
 
+
+        if (data.up_to_date === "Vencida") {
+          const localClients = [...clients];
+
+          const defaulterClient = localClients.find((client) => client.id === data.client_id)
+
+          defaulterClient.up_to_date = false;
+
+          setClients(localClients);
+        }
+
+        setHomeModifier(data);
+
         setCharges((oldCharges) => {
           const localCharges = [...oldCharges]
           localCharges.push(data)
@@ -114,7 +128,7 @@ function NewChargeModal({ newChargeRef, client,
   }
 
   const handleClose = () => {
-    newChargeRef.current.close()
+    handleNewChargeModalClose()
     clearForm()
   }
 
@@ -129,14 +143,28 @@ function NewChargeModal({ newChargeRef, client,
     setValueError(false)
   }
 
+  const formWrapperRef = useRef(null)
+
+  const handleClickOutsideDialog = (e) => {
+    if (!formWrapperRef.current.contains(e.target)) {
+      handleClose()
+    }
+  }
+
+  useEffect(() => {
+    if (opennedLocation.current !== location.pathname) {
+      handleClose()
+    }
+  }, [location])
+
   return (
-    <dialog className='NewChargeModal' ref={newChargeRef}>
-      <div className='dialog-inner-wrapper'>
+    <div className='NewChargeModal' onClick={handleClickOutsideDialog}>
+      <div className='dialog-inner-wrapper' ref={formWrapperRef}>
         <dir className='form-header'>
-          <img className='x-close-button' src={CloseIcon} alt="fechar" onClick={handleClose} />
           <div className='title-div'>
             <img className='title-icon' src={BlankChargeIcon} alt="nova cobrança" />
-            <span className='title'>Cadastro de Cobrança</span>
+            <span className='title'>{editing ? 'Edição' : 'Cadastro'} de Cobrança</span>
+            <img className='x-close-button' src={CloseIcon} alt="fechar" onClick={handleClose} />
           </div>
         </dir>
         <form className='new-charge-form' onSubmit={handleSubmit}>
@@ -168,7 +196,7 @@ function NewChargeModal({ newChargeRef, client,
 
           <div className='radio-div'>
             <label htmlFor="status">Status*</label>
-            <div className='radio-inner-div'>
+            <div className='radio-inner-div' onClick={() => setStatus('pago')}>
               {status === 'pago' ?
                 <div className='radio-icon-background checked'>
                   <img className='radio-checked-icon' src={CheckedIcon} alt="" />
@@ -177,9 +205,9 @@ function NewChargeModal({ newChargeRef, client,
                 <div className='radio-icon-background unchecked' />
               }
               <input type="radio" name="status" id="pago" defaultChecked={status === 'pago' ? true : false} value='pago' onChange={handleChange} />
-              <label htmlFor="pago" onClick={() => setStatus('pago')}>Cobrança Paga</label>
+              <label htmlFor="pago">Cobrança Paga</label>
             </div>
-            <div className='radio-inner-div'>
+            <div className='radio-inner-div' onClick={() => setStatus('pendente')}>
               {status === 'pendente' ?
                 <div className='radio-icon-background checked'>
                   <img className='radio-checked-icon' src={CheckedIcon} alt="" />
@@ -188,7 +216,7 @@ function NewChargeModal({ newChargeRef, client,
                 <div className='radio-icon-background unchecked' />
               }
               <input type="radio" name="status" id="pendente" defaultChecked={status === 'pendente' ? true : false} value='pendente' onChange={handleChange} />
-              <label htmlFor="pendente" onClick={() => setStatus('pendente')} >Cobrança Pendente</label>
+              <label htmlFor="pendente">Cobrança Pendente</label>
             </div>
           </div>
 
@@ -198,7 +226,7 @@ function NewChargeModal({ newChargeRef, client,
           </div>
         </form>
       </div >
-    </dialog >
+    </div >
   )
 }
 

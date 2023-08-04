@@ -25,8 +25,28 @@ function DashboardContextProvider({ children }) {
   const [clients, setClients] = useState([]);
   const [charges, setCharges] = useState([]);
   const [chargesSummary, setChargesSummary] = useState({});
-
   const [clientDetails, setClientDetails] = useState({});
+
+  const [openNewChargeModal, setOpenNewChargeModal] = useState(false);
+  const [newChargeClient, setNewChargeClient] = useState({ id: '', name: '' });
+  const [editingCharge, setEditingCharge] = useState({ description: '', due_date: '', value: '', status: 'pago' });
+  const [isEditingCharge, setIsEditingCharge] = useState(false);
+
+  const [homeModifier, setHomeModifier] = useState({});
+
+  function handleNewChargeModalOpen(client, editing = false) {
+    if (editing) {
+      setIsEditingCharge(true)
+    }
+    setNewChargeClient(client)
+    setOpenNewChargeModal(true)
+  }
+
+  function handleNewChargeModalClose() {
+    setOpenNewChargeModal(false)
+    setIsEditingCharge(false)
+    setEditingCharge({ description: '', due_date: '', value: '', status: 'pago' })
+  }
 
   return (
     <dashboardContext.Provider value={{
@@ -43,7 +63,17 @@ function DashboardContextProvider({ children }) {
       clientDetails,
       setClientDetails,
       charges,
-      setCharges
+      setCharges,
+      openNewChargeModal,
+      handleNewChargeModalOpen,
+      handleNewChargeModalClose,
+      newChargeClient,
+      editingCharge,
+      setEditingCharge,
+      isEditingCharge,
+      setIsEditingCharge,
+      homeModifier,
+      setHomeModifier
     }}>
       {children}
     </dashboardContext.Provider>

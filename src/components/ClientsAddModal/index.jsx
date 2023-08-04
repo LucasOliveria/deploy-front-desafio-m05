@@ -14,7 +14,7 @@ function ClientsAddModal({ onClose }) {
   const [errorEmail, setErrorEmail] = useState('');
   const [errorCpf, setErrorCpf] = useState('');
   const [errorPhone, setErrorPhone] = useState('');
-  const { clients, setClients } = useDashboard();
+  const { clients, setClients, setHomeModifier } = useDashboard();
 
   const [form, setForm] = useState({
     name: '',
@@ -105,7 +105,6 @@ function ClientsAddModal({ onClose }) {
       return
     }
 
-
     const newClient = {
       name: form.name,
       email: form.email,
@@ -130,6 +129,8 @@ function ClientsAddModal({ onClose }) {
       });
 
       setClients([...clients, response.data]);
+
+      setHomeModifier(response.data);
 
       handleBtnCancel();
 
