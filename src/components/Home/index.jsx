@@ -24,7 +24,7 @@ function Home() {
         />
         <ChargesResume
           imageSrc={ExpiredChargesImage}
-          title={'Cobranças vencidas'}
+          title={'Cobranças Vencidas'}
           value={chargesSummary.totalChargeAmountPerStatus?.overdue_charges || "0"}
           backgroundColor={'var(--low-opacity-red-n1)'}
         />
@@ -47,7 +47,7 @@ function Home() {
         <ChargesCard
           backgroundColor={'var(--low-opacity-yellow-n1)'}
           textColor={'var(--yellow-n1)'}
-          title={'Cobranças previstas'}
+          title={'Cobranças Previstas'}
           total={chargesSummary.amountChargesPerStatus?.amountExpectedCharges}
           body={chargesSummary.clients?.clientsExpectedCharges}
         />

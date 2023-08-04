@@ -27,7 +27,7 @@ function ChargesTableRow({ charge, renderClientName = true }) {
       <td>{id}</td>
       <td>{formatCurrency(value)}</td>
       <td>{formattedDate}</td>
-      <td>
+      <td className="charge-status">
         <img src={up_to_date === 'Paga' ? payIcon : up_to_date === 'Vencida' ? defeatedIcon : pendingIcon} alt="status da cobrança" />
       </td>
       <td className='description'>

@@ -28,7 +28,7 @@ function ClientsTableRow({ client }) {
       <td>{formatCpfNumber(cpf)}</td>
       <td>{email}</td>
       <td>{formatPhoneNumber(phone)}</td>
-      <td><img src={up_to_date ? upToDate : defaulter} alt="status da cobrança" /></td>
+      <td className='client-status'><img src={up_to_date ? upToDate : defaulter} alt="status da cobrança" /></td>
       <td className='table-row-add-charge' >
         <img className='add-charge-img' src={addChargeIcon} alt="add cobrança" onClick={handleModalOpen} />
       </td>

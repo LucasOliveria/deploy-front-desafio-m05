@@ -4,6 +4,10 @@
   transition: all 0.2s;
 }
 
+.clients-table .client-status img {
+  vertical-align: middle;
+}
+
 .clients-table .clickable:hover {
   color: var(--pink-color);
   text-decoration: underline;

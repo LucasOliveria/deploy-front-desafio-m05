@@ -1,8 +1,13 @@
+.ChargesTableRow .charge-status img {
+  vertical-align: middle;
+}
+
 .ChargesTableRow .description {
   display: flex;
   align-items: center;
   justify-content: center;
   justify-content: space-between;
+  height: 60px;
 }
 
 .ChargesTableRow .description .description-text {
@@ -10,6 +15,7 @@
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  align-self: center;
   width: 160px;
 }
 
