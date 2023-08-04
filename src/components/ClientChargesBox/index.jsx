@@ -13,7 +13,7 @@ function ClientChargesBox() {
   };
 
   return (
-    <div className="container-client-charges fade-in">
+    <div className="container-client-charges">
       <div className='title-client-charges'>
         <h3>Cobranças do cliente</h3>
         <button onClick={handleModalOpen}>

@@ -8,9 +8,6 @@
   background-color: var(--modal-background-color);
   backdrop-filter: blur(2px);
   overflow-y: auto;
-  position: fixed;
-  z-index: 3;
-  top: 0;
 }
 
 .add-modal-form {

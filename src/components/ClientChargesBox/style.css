@@ -63,12 +63,9 @@
   min-width: 900px;
   text-align: justify;
   border-collapse: collapse;
-  position: relative;
 }
 
 .table-client-charges thead {
-  position: sticky;
-  top: 0;
   background-color: var(--white);
 }
 
