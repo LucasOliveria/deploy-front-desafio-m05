@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-
 export const dashboardContext = createContext({});
 
 function DashboardContextProvider({ children }) {
@@ -27,12 +26,30 @@ function DashboardContextProvider({ children }) {
   const [chargesSummary, setChargesSummary] = useState({});
   const [clientDetails, setClientDetails] = useState({});
 
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const [showModalEditClient, setShowModalEditClient] = useState(false);
   const [openNewChargeModal, setOpenNewChargeModal] = useState(false);
   const [newChargeClient, setNewChargeClient] = useState({ id: '', name: '' });
   const [editingCharge, setEditingCharge] = useState({ description: '', due_date: '', value: '', status: 'pago' });
   const [isEditingCharge, setIsEditingCharge] = useState(false);
 
+  const [searchCharges, setSearchCharges] = useState('');
+  const [filteredCharges, setFilteredCharges] = useState([]);
+  const [filteredClients, setFilteredClients] = useState([]);
+
+  const [filterHomeClients, setFilterHomeClients] = useState(false);
+  const [filterHomeCharges, setFilterHomeCharges] = useState(false)
+
+
   const [homeModifier, setHomeModifier] = useState({});
+  const [clientsModifier, setClientsModifier] = useState({});
+
+  const [openDeleteCharge, setOpenDeleteCharge] = useState(false);
+  const [chargeToDelete, setChargeToDelete] = useState({});
+
+  const [showChargeDetailModal, setShowChargeDetailModal] = useState(false);
+  const [chargeDetails, setChargeDetails] = useState({});
 
   function handleNewChargeModalOpen(client, editing = false) {
     if (editing) {
@@ -72,8 +89,32 @@ function DashboardContextProvider({ children }) {
       setEditingCharge,
       isEditingCharge,
       setIsEditingCharge,
+      clientsModifier,
+      setClientsModifier,
       homeModifier,
-      setHomeModifier
+      setHomeModifier,
+      openDeleteCharge,
+      setOpenDeleteCharge,
+      chargeToDelete,
+      setChargeToDelete,
+      showChargeDetailModal,
+      setShowChargeDetailModal,
+      chargeDetails,
+      setChargeDetails,
+      sortOrder,
+      setSortOrder,
+      filteredCharges,
+      setFilteredCharges,
+      filteredClients,
+      setFilteredClients,
+      filterHomeClients,
+      setFilterHomeClients,
+      filterHomeCharges,
+      setFilterHomeCharges,
+      showModalEditClient,
+      setShowModalEditClient,
+      searchCharges,
+      setSearchCharges
     }}>
       {children}
     </dashboardContext.Provider>

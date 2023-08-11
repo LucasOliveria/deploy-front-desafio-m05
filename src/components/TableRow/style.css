@@ -2,3 +2,9 @@
     height: 56px;
     margin: 51px;
 }
+
+.td-value {
+    word-break: break-all;
+    padding-right: 15px;
+    max-width: 120px;
+}

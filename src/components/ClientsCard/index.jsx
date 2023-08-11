@@ -1,6 +1,20 @@
+import { useNavigate } from 'react-router-dom';
 import { formatTotalNumber } from '../../helpers/formatter';
+import useDashboard from '../../hooks/useDashboard';
 import './style.css';
-function ClientsCard({ icon, title, total, textColor, backgroundColor, body }) {
+
+function ClientsCard({ icon, title, total, textColor, backgroundColor, body, up_to_date }) {
+  const navigate = useNavigate();
+  const { clients, setFilteredClients, setFilterHomeClients } = useDashboard();
+
+  function handleWatchClients() {
+    const localClients = [...clients]
+    const filteredClients = localClients.filter(client => client.up_to_date === up_to_date);
+    setFilteredClients(filteredClients);
+    setFilterHomeClients(true);
+    navigate('/dashboard/clientes')
+  }
+
   return (
     <div className='client-card'>
       <div className='top'>
@@ -29,7 +43,7 @@ function ClientsCard({ icon, title, total, textColor, backgroundColor, body }) {
           <tbody>
             {body?.length ? body?.length && body?.slice(0, 4).map((client) => (
               <tr key={client.id}>
-                <td className='first'>{client.name}</td>
+                <td className='first td-name'>{client.name}</td>
                 <td className='second'>{client.id}</td>
                 <td className='third'>{client.cpf}</td>
               </tr>
@@ -45,7 +59,7 @@ function ClientsCard({ icon, title, total, textColor, backgroundColor, body }) {
         </table>
       </div>
       <div className='bottom'>
-        <h3>Ver todos</h3>
+        <h3 onClick={handleWatchClients}>Ver todos</h3>
       </div>
     </div>
   )

@@ -16,37 +16,55 @@ html {
 
   --dark-green-text-color: #204A2B;
   --green-text-color: #3F8751;
+  --green-n1: #0E8750;
+  --green-n2: #034A2A;
+  --light-green: #ACD9C5;
+  --pink-color: #DA0175;
+  --hover-button: #b60362;
+  --soft-pink: #F2D6D0;
   --light-gray-bg-color: #F8F8F9;
   --dark-gray-bg-color: #343447;
-  --pink-color: #DA0175;
-  --soft-pink: #F2D6D0;
-  --gray-container-steps: #F0F0F5;
-  --green-steps: #0E8750;
-  --hover-button: #b60362;
   --gray-n1: #344054;
   --gray-n2: #3F3F55;
   --gray-n3: #747488;
   --gray-n4: #667085;
   --gray-n5: #6E6E85;
   --gray-n6: #C8C8D7;
-  --next-step: #DEDEE9;
-  --blue-n1: #1fa8af;
+  --gray-n7: #F0F0F5;
+  --grey-n8: #DEDEE9;
   --red-n1: #971d1d;
   --red-n2: #E70000;
   --red-n3: #AE1100;
-  --yellow-n1: #c5a505;
-  --low-opacity-blue-n1: #1fa8af1c;
   --low-opacity-red-n1: #971d1d1c;
+  --blue-n1: #1fa8af;
+  --blue-n2: #243F80;
+  --soft-blue: #C3D4FE;
+  --low-opacity-blue-n1: #1fa8af1c;
   --low-opacity-yellow-n1: #c5a5051c;
-  --light-green: #ACD9C5;
-  --modal-background-color: rgba(145, 154, 150, 0.3);
+  --modal-background-color: #919a964d;
   --border-input: 1px solid #D0D5DD;
   --white: #ffffff;
+  --yellow-n1: #c5a505;
+  --feedback-ateno-dark: #CC7800;
   overflow-x: hidden;
 }
 
 body {
   font-size: 1.6rem;
+}
+
+.td-name,
+.td-email,
+.ChargesTableRow .description .description-text,
+.name-client-details {
+  padding-right: 25px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.Toastify__toast-container {
+  margin-right: 1rem;
 }
 
 .Toastify__toast-theme--colored.Toastify__toast--info,
@@ -60,21 +78,34 @@ body {
 .Toastify__toast-theme--colored.Toastify__toast--error {
   background-color: var(--soft-pink) !important;
   color: var(--red-n3) !important;
-
-}
-
-.Toastify__close-button>svg {
-  color: var(--red-n3);
-
 }
 
 .Toastify__toast-theme--colored.Toastify__toast--success {
-  background-color: #C3D4FE !important;
-  color: #243F80 !important;
+  background-color: var(--soft-blue) !important;
+  color: var(--blue-n2) !important;
 }
 
-.Toastify__toast-container {
-  margin-right: 1rem;
+.Toastify__toast-theme--colored.Toastify__toast--info,
+.Toastify__toast-theme--colored.Toastify__toast--error,
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--info .Toastify__close-button>svg,
+.Toastify__toast-theme--colored.Toastify__toast--error .Toastify__close-button>svg {
+  color: var(--red-n3);
+}
+
+
+.Toastify__toast-theme--colored.Toastify__toast--success .Toastify__close-button>svg {
+  color: var(--blue-n2);
+}
+
+.Toastify__close-button>svg {
+  margin-top: 16px;
 }
 
 ::-webkit-scrollbar {

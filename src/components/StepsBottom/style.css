@@ -9,10 +9,10 @@
 .step {
   width: 82px;
   height: 100%;
-  background-color: var(--next-step);
+  background-color: var(--grey-n8);
   border-radius: 5px;
 }
 
 .current-step {
-  background-color: var(--green-steps);
+  background-color: var(--green-n1);
 }

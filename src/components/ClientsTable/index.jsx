@@ -1,57 +1,96 @@
-
 import { useEffect, useState } from 'react';
 import changeOrder from "../../assets/change-order.svg";
 import clientIconTable from "../../assets/client-icon-table.svg";
-
 import filterIcon from "../../assets/filter-icon.svg";
+import notResults from '../../assets/notResults.png';
 import searchIcon from "../../assets/search-icon.svg";
 import useDashboard from '../../hooks/useDashboard';
 import ClientsAddModal from '../ClientsAddModal';
 import ClientsTableRow from '../ClientsTableRow';
 import './style.css';
 
-
 function ClientsTable() {
   const [showModal, setShowModal] = useState(false);
-  const { clients, setClients } = useDashboard();
-  const [sortOrder, setSortOrder] = useState('asc');
-  const [search, setSearch] = useState('');
-  const [filteredClients, setFilteredClients] = useState([]);
-  const [rotate, setRotate] = useState(false)
+
+  const [rotate, setRotate] = useState(false);
+
+  const [searchClient, setSearchClient] = useState('');
+  
+  const { clients, setClients, sortOrder, setSortOrder, filteredClients, setFilteredClients, filterHomeClients, setFilterHomeClients } = useDashboard();
+
+  const [copyClients, setCopyClients] = useState([...clients]);
+
+  const [copyFilteredClients, setCopyFilteredClients] = useState([...filteredClients]);
+
+  const filtered = searchClient ? copyClients.filter((client) => {
+    return client.name.toLowerCase().startsWith(searchClient.toLowerCase()) || client.cpf.startsWith(searchClient) || client.email.startsWith(searchClient)
+  }) : clients;
+
+  const filteredbyFiltered = searchClient ? copyFilteredClients.filter((client) => {
+    return client.name.toLowerCase().startsWith(searchClient.toLowerCase()) || client.cpf.startsWith(searchClient) || client.email.startsWith(searchClient)
+  }) : filteredClients
+
   useEffect(() => {
-    const filtered = clients.filter((client) => {
-      return client.name.toLowerCase().startsWith(search.toLowerCase())
-    });
-    setFilteredClients(filtered);
-
-  }, [search, clients]);
-
+    return () => {
+      setFilterHomeClients(false);
+    }
+  }, []);
 
   function handleAlphabeticalOrder() {
     setRotate(!rotate);
     const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
     setSortOrder(newSortOrder);
 
-    const sortedClients = [...filteredClients];
+    const sortedClients = [...filtered];
+    const sortedClientsFiltered = [...filteredbyFiltered];
 
-    sortedClients.sort((a, b) => {
-      const nomeA = a.name.toUpperCase();
-      const nomeB = b.name.toUpperCase();
+    if (!filterHomeClients) {
+      sortedClients.sort((a, b) => {
+        const nomeA = a.name.toUpperCase();
+        const nomeB = b.name.toUpperCase();
 
-      if (newSortOrder === 'asc') {
-        return nomeA.localeCompare(nomeB);
-      } else {
-        return nomeB.localeCompare(nomeA);
+        if (newSortOrder === 'asc') {
+          return nomeA.localeCompare(nomeB);
+        } else {
+          return nomeB.localeCompare(nomeA);
+        }
+      });
+
+      if (searchClient) {
+        return setCopyClients(sortedClients)
       }
-    });
-    setClients(sortedClients);
+
+     setClients(sortedClients);
+    } else {
+      sortedClientsFiltered.sort((a, b) => {
+        const nomeA = a.name.toUpperCase();
+        const nomeB = b.name.toUpperCase();
+
+        if (newSortOrder === 'asc') {
+          return nomeA.localeCompare(nomeB);
+        } else {
+          return nomeB.localeCompare(nomeA);
+        }
+      });
+
+      if (searchClient) {
+        return setCopyFilteredClients(sortedClientsFiltered);
+      }
+      
+      setFilteredClients(sortedClientsFiltered);
+    }
+
   }
 
   function handleSearch(event) {
     const searchCharacter = event.target.value;
-    setSearch(searchCharacter);
-  }
+    setSearchClient(searchCharacter);
 
+    if (!searchClient) {
+      setCopyClients([...clients]);
+      setCopyFilteredClients([...filteredClients]);
+    }
+  }
 
   return (
     <div className="container-clients-table">
@@ -72,7 +111,7 @@ function ClientsTable() {
               id=""
               placeholder='Pesquisa'
               onChange={handleSearch}
-              value={search}
+              value={searchClient}
             />
             <img src={searchIcon} alt="search icon" />
           </div>
@@ -100,13 +139,23 @@ function ClientsTable() {
             </tr>
           </thead>
           <tbody>
-            {!!filteredClients.length &&
-              filteredClients.map((client) => (
+            {!filterHomeClients
+              ?
+              !!filtered.length &&
+              filtered.map((client) => (
+                <ClientsTableRow key={client.id} client={client} />
+              ))
+              :
+              filteredbyFiltered.map((client) => (
                 <ClientsTableRow key={client.id} client={client} />
               ))
             }
           </tbody>
         </table>
+        {!filtered.length &&
+          <div className='not-results'>
+            <img src={notResults} alt="not results" />
+          </div>}
       </div>
       {showModal && <ClientsAddModal onClose={() => setShowModal(false)} />}
     </div>

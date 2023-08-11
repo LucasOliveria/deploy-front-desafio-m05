@@ -10,9 +10,18 @@
   gap: 22px;
 }
 
-@media (min-width: 1024px) and (max-width: 1300px) {
+.wrapper-charges-cards {
+  margin: 24px 0 32px 0;
+}
+
+.wrapper-clients-cards {
+  margin-bottom: 37px;
+}
+
+@media (min-width: 500px) and (max-width: 1300px) {
 
   .HomeComponent .cards-wrapper {
+    flex-wrap: wrap;
     padding: 0 80px;
     justify-content: center;
     gap: 20px;

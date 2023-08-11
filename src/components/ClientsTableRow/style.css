@@ -1,16 +1,25 @@
-.clients-table .clickable,
+.clients-table tr,
 .table-row-add-charge .add-charge-img:hover {
   padding-left: 5px;
   transition: all 0.2s;
 }
 
-.clients-table .client-status img {
+.clients-table .client-status img,
+.table-row-add-charge .add-charge-img {
   vertical-align: middle;
 }
 
-.clients-table .clickable:hover {
-  color: var(--pink-color);
-  text-decoration: underline;
+.td-name,
+.td-email {
+  max-width: 120px;
+}
+
+.clients-table tbody tr:hover {
+  background-color: var(--gray-n7);
+}
+
+.clients-table tbody tr td:first-child {
+  padding-left: 8px;
 }
 
 .clients-table .clickable:hover,

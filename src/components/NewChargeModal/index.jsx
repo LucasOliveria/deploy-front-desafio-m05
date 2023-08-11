@@ -10,25 +10,41 @@ import useDashboard from '../../hooks/useDashboard';
 import api from '../../services/api';
 import { headers } from '../../utils/headers';
 import './style.css';
+import failureIcon from '../../assets/failure-icon.svg'
 
 function NewChargeModal() {
-  const { clientDetails, setClientDetails, setCharges, newChargeClient: client, editingCharge: incomeCharge, isEditingCharge: editing,
-    handleNewChargeModalClose, clients, setClients, setHomeModifier } = useDashboard()
+  const {
+    clientDetails,
+    setClientDetails,
+    setCharges,
+    newChargeClient: client,
+    editingCharge: incomeCharge,
+    isEditingCharge: editing,
+    handleNewChargeModalClose,
+    clients,
+    setClients,
+    setHomeModifier,
+    setClientsModifier,
+    setFilteredCharges,
+    setSearchCharges
+  } = useDashboard()
   const location = useLocation()
   const opennedLocation = useRef(location.pathname)
 
-  const [description, setDescription] = useState(incomeCharge.description)
-  const [dueDate, setDueDate] = useState(incomeCharge.due_date ? formatDate(incomeCharge.due_date, "yyyy-MM-dd") : '')
-  const [value, setValue] = useState(formatCurrencyInput(`R$ ${incomeCharge.value}`, incomeCharge.value))
-  const [status, setStatus] = useState(incomeCharge.status)
+  const [description, setDescription] = useState(incomeCharge.description);
+  const [dueDate, setDueDate] = useState(incomeCharge.due_date ? formatDate(incomeCharge.due_date, "yyyy-MM-dd") : '');
+  const [value, setValue] = useState(incomeCharge.value ? formatCurrencyInput(`R$ ${incomeCharge.value / 100}`, '') : 'R$ ');
+  const [status, setStatus] = useState(incomeCharge.status);
 
-  const [descriptionError, setDescriptionError] = useState(false)
-  const [dueDateError, setDueDateError] = useState(false)
-  const [valueError, setValueError] = useState(false)
+  const [descriptionError, setDescriptionError] = useState(false);
+  const [dueDateError, setDueDateError] = useState(false);
+  const [valueError, setValueError] = useState(false);
 
-  const genericErrorMessage = "Este campo deve ser preenchido"
+  const hasErrors = useRef(false);
 
-  const hasErrors = useRef(false)
+  const lockSubmit = useRef(false);
+
+  const genericErrorMessage = "Este campo deve ser preenchido";
 
   const handleChange = (e) => {
     const [inputName, inputValue] = [e.target.name, e.target.value]
@@ -54,6 +70,11 @@ function NewChargeModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (lockSubmit.current) {
+      return
+    } else {
+      lockSubmit.current = true
+    }
     if (!description) {
       setDescriptionError(true)
       hasErrors.current = true
@@ -68,10 +89,12 @@ function NewChargeModal() {
     }
 
     if (hasErrors.current === true) {
+      lockSubmit.current = false
       return
     }
 
     const id = toast.loading("Por favor, aguarde...");
+
     try {
       const formattedValue = formatCurrencyToCents(value)
       const newCharge = {
@@ -85,8 +108,52 @@ function NewChargeModal() {
       let toastMessage;
 
       if (editing) {
-        //TODO editing
         toastMessage = "Cobrança editada com sucesso"
+
+        const { client_id: _, ...editedCharge } = newCharge;
+        const { data: updatedCharge } = await api.put(`/charge/${incomeCharge.id}`, editedCharge, { headers: headers() });
+
+        if (updatedCharge.up_to_date === "Vencida") {
+          const localClients = [...clients];
+
+          const updatedClient = localClients.find((client) => client.id === updatedCharge.client_id);
+
+          updatedClient.up_to_date = false;
+
+          setClients(localClients);
+        } else {
+          setClientsModifier(updatedCharge);
+        }
+
+        setHomeModifier(updatedCharge);
+
+        setSearchCharges('');
+
+        setFilteredCharges((oldCharges) => {
+          const localCharges = [...oldCharges]
+          const index = localCharges.findIndex(charge => charge.id === incomeCharge.id)
+          localCharges.splice(index, 1, updatedCharge)
+          return localCharges
+        });
+
+        setCharges((oldCharges) => {
+          const localCharges = [...oldCharges]
+          const index = localCharges.findIndex(charge => charge.id === incomeCharge.id)
+          localCharges.splice(index, 1, updatedCharge)
+          return localCharges
+        })
+
+        if (clientDetails?.charges) {
+          setClientDetails((oldClientDetails) => {
+            const localOldClientDetailsCharges = [...(oldClientDetails.charges)]
+            const index = localOldClientDetailsCharges.findIndex(charge => charge.id === incomeCharge.id)
+            localOldClientDetailsCharges.splice(index, 1, updatedCharge)
+
+            oldClientDetails.charges = localOldClientDetailsCharges
+            return oldClientDetails
+          })
+        }
+
       } else {
         toastMessage = "Cobrança cadastrada com sucesso"
 
@@ -118,12 +185,16 @@ function NewChargeModal() {
           })
         }
       }
+
       toast.update(id, { render: toastMessage, type: "success", isLoading: false, autoClose: 1500, position: "bottom-right", icon: ({ theme, type }) => <img src={SuccessIcon} /> });
+
       handleClose()
 
     } catch (error) {
       handleClose()
-      toast.update(id, { render: "Não foi possível cadastrar a cobrança", type: "error", isLoading: false, autoClose: 1500 });
+      toast.update(id, { render: "Não foi possível cadastrar ou editar a cobrança", type: "error", isLoading: false, autoClose: 1500, position: "bottom-right", icon: ({ theme, type }) => <img src={failureIcon} /> });
+    } finally {
+      lockSubmit.current = false
     }
   }
 
@@ -135,7 +206,7 @@ function NewChargeModal() {
   function clearForm() {
     setDescription(incomeCharge.description)
     setDueDate(incomeCharge.due_date ? formatDate(incomeCharge.due_date, "yyyy-MM-dd") : '')
-    setValue(`R$ ${incomeCharge.value}`)
+    setValue(incomeCharge.value ? formatCurrencyInput(`R$ ${incomeCharge.value / 100}`, '') : 'R$ ')
     setStatus(incomeCharge.status)
     hasErrors.current = false
     setDescriptionError(false)

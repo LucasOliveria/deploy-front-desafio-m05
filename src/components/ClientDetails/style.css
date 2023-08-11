@@ -7,10 +7,11 @@
   align-items: center;
 }
 
-.icon-and-title h2 {
+.icon-and-title .name-client-details {
   margin-left: 16px;
   font-family: 'Montserrat', sans-serif;
   font-size: 2.6rem;
   font-weight: 600;
   color: var(--gray-n2);
+  width: 900px;
 }

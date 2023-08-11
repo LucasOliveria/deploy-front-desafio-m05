@@ -38,7 +38,7 @@ function ClientDetails() {
     <div className='container-client-details'>
       <div className="icon-and-title">
         <img src={clientIconTable} alt="client icon" />
-        <h2>{clientDetails.client?.name}</h2>
+        <h2 className="name-client-details">{clientDetails.client?.name}</h2>
       </div>
       <ClientDetailsBox />
 

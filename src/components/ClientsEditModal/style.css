@@ -1,7 +1,9 @@
-.add-modal-container {
+.edit-modal-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
   left: 108px;
   height: 100vh;
   width: 100vw;
@@ -10,7 +12,7 @@
   overflow-y: auto;
 }
 
-.add-modal-form {
+.edit-modal-form {
   width: 440px;
   display: flex;
   flex-direction: column;
@@ -20,63 +22,63 @@
   position: relative;
 }
 
-.add-modal-header img[alt="Fechar modal"] {
+.edit-modal-header img[alt="Fechar modal"] {
   position: absolute;
   top: 20px;
   right: 24px;
 }
 
-.add-modal-row {
+.edit-modal-row {
   display: flex;
   gap: 10px;
   width: 100%;
 }
 
-.add-modal-row-col {
+.edit-modal-row-col {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-.add-modal-row-col-asymmetric {
+.edit-modal-row-col-asymmetric {
   width: 95%;
 }
 
-.add-modal-row-col-asymmetric input {
+.edit-modal-row-col-asymmetric input {
   width: 100%;
 }
 
-.add-modal-header h1 {
+.edit-modal-header h1 {
   font-family: 'Montserrat';
   font-size: 2.6rem;
   text-align: left;
   color: var(--gray-n2);
 }
 
-.add-modal-header h1,
-.add-modal-form label {
+.edit-modal-header h1,
+.edit-modal-form label {
   font-weight: 600;
 }
 
-.add-modal-close {
+.edit-modal-close {
   align-self: flex-start;
 }
 
-.add-modal-close,
-.add-modal-btn-cancel,
-.add-modal-btn-confirm {
+.edit-modal-close,
+.edit-modal-btn-cancel,
+.edit-modal-btn-confirm {
   cursor: pointer;
 
 }
 
-.add-modal-form label {
+.edit-modal-form label {
   font-size: 1.4rem;
   margin-top: 5px;
   text-align: left;
   color: var(--gray-n2);
 }
 
-.add-modal-form-input {
+.edit-modal-form-input {
   font-size: 1.6rem;
   line-height: 20px;
   text-align: left;
@@ -84,15 +86,15 @@
   border-radius: 8px;
 }
 
-.add-modal-form-input,
-.add-modal-btn-cancel {
+.edit-modal-form-input,
+.edit-modal-btn-cancel {
   border: var(--border-input);
 }
 
-.add-modal-form-input,
-.add-modal-error,
-.add-modal-btn-cancel,
-.add-modal-btn-confirm {
+.edit-modal-form-input,
+.edit-modal-error,
+.edit-modal-btn-cancel,
+.edit-modal-btn-confirm {
   font-weight: 400;
 }
 
@@ -100,33 +102,33 @@
   width: 100%;
 }
 
-.add-modal-error-border-input {
+.edit-modal-error-border-input {
   border: 1px solid var(--red-n2);
 }
 
-.add-modal-error {
+.edit-modal-error {
   font-size: 1.2rem;
   text-align: left;
   color: var(--red-n2);
   margin-bottom: 5px;
 }
 
-.add-modal-error,
-.add-modal-form label,
-.add-modal-form input,
-.add-modal-btn-cancel,
-.add-modal-btn-confirm {
+.edit-modal-error,
+.edit-modal-form label,
+.edit-modal-form input,
+.edit-modal-btn-cancel,
+.edit-modal-btn-confirm {
   font-family: 'Nunito';
 }
 
-.add-modal-row-btn {
+.edit-modal-row-btn {
   display: flex;
   margin-top: 15px;
   gap: 15px;
 }
 
-.add-modal-btn-cancel,
-.add-modal-btn-confirm {
+.edit-modal-btn-cancel,
+.edit-modal-btn-confirm {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,20 +138,20 @@
   font-size: 1.8rem;
 }
 
-.add-modal-btn-cancel {
-  color: var(--green-steps);
+.edit-modal-btn-cancel {
+  color: var(--green-n1);
 }
 
-.add-modal-btn-confirm {
+.edit-modal-btn-confirm {
   color: #F8F8F9;
   background-color: var(--pink-color);
   border: none;
 }
 
-.add-modal-btn-cancel:hover {
+.edit-modal-btn-cancel:hover {
   opacity: 0.8;
 }
 
-.add-modal-btn-confirm:hover {
+.edit-modal-btn-confirm:hover {
   background-color: var(--hover-button);
 }

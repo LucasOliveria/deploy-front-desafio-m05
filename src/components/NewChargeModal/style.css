@@ -41,7 +41,6 @@
   color: var(--gray-n2);
   font-family: 'Montserrat';
   font-size: 26px;
-  font-style: normal;
   font-weight: 600;
   line-height: 130%;
 }
@@ -73,7 +72,6 @@
 .NewChargeModal .new-charge-form textarea::placeholder {
   color: var(--gray-n3);
   font-size: 18px;
-  font-style: normal;
   font-weight: 400;
   line-height: 24px;
 }
@@ -106,7 +104,7 @@
   gap: 16px;
   font-size: 16px;
   border-radius: 10px;
-  background: var(--gray-container-steps);
+  background: var(--gray-n7);
   padding: 8px 12px;
   margin-bottom: 8px;
   cursor: pointer;
@@ -130,7 +128,7 @@
 }
 
 .NewChargeModal .radio-div .radio-icon-background.checked {
-  background-color: var(--green-steps);
+  background-color: var(--green-n1);
 }
 
 .NewChargeModal .radio-div .radio-icon-background.unchecked {
@@ -162,11 +160,10 @@
   width: 50%;
   height: fit-content;
   padding: 4px 0;
-  border: 1px solid var(--next-step);
+  border: 1px solid var(--grey-n8);
   color: var(--light-gray-bg-color);
   font-family: 'Nunito';
-  font-size: 18px;
-  font-style: normal;
+  font-size: 1.8rem;
   font-weight: 400;
   line-height: normal;
   cursor: pointer;
@@ -175,7 +172,7 @@
 }
 
 .NewChargeModal .buttons-div .cancel-button {
-  color: var(--green-steps);
+  color: var(--green-n1);
 }
 
 .NewChargeModal .buttons-div .submit-button {

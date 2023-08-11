@@ -77,16 +77,16 @@
   min-width: 345px;
   background-color: var(--white);
   border-radius: 30px;
-  margin-top: 24px;
+  margin: 24px 0 35px 0;
   padding: 0px 23px 12px 23px;
   overflow-x: auto;
-  max-height: 400px;
+  max-height: 480px;
 }
 
 .charges-table {
   width: 100%;
-  border-collapse: collapse;
   min-width: 900px;
+  border-collapse: collapse;
   position: relative;
 }
 
@@ -111,11 +111,27 @@
 
 .charges-table tbody {
   font-size: 1.4rem;
-  line-height: 40px;
   letter-spacing: 0.07px;
 }
 
 .charges-table tbody tr {
   height: 60px;
   border-top: 1px solid #EFF0F6;
+}
+
+.rotate {
+  transform: rotate(0deg);
+  transition: all 0.5s;
+
+}
+
+.rotate-reverse {
+  transform: rotate(180deg);
+  transition: all 0.5s;
+}
+
+.not-results {
+  height: calc(480px - 66px);
+  display: flex;
+  justify-content: center;
 }

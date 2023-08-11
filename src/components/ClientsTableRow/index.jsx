@@ -24,9 +24,9 @@ function ClientsTableRow({ client }) {
 
   return (
     <tr>
-      <td className='clickable' onClick={handleClientDetails}>{name}</td>
+      <td className='clickable td-name' onClick={handleClientDetails}>{name}</td>
       <td>{formatCpfNumber(cpf)}</td>
-      <td>{email}</td>
+      <td className='td-email'>{email}</td>
       <td>{formatPhoneNumber(phone)}</td>
       <td className='client-status'><img src={up_to_date ? upToDate : defaulter} alt="status da cobrança" /></td>
       <td className='table-row-add-charge' >

@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin-bottom: 37px;
 }
 
 .client-card .top {
@@ -80,12 +79,12 @@
 
 .client-card .table thead tr th:first-child,
 .client-card .table tbody tr td:first-child {
-  padding-left: 24px;
+  padding-left: 15px;
 }
 
 .client-card .table thead tr th:last-child,
 .client-card .table tbody tr td:last-child {
-  padding-left: 74px;
+  padding-left: 15px;
 }
 
 .client-card .table thead {
@@ -94,8 +93,6 @@
 
 .client-card .table thead th {
   color: var(--gray-n2);
-  line-height: 50px;
-  letter-spacing: 0.08px;
 }
 
 .client-card .table thead th,
@@ -108,8 +105,7 @@
   height: 56px;
   color: var(--gray-n5);
   font-size: 1.4rem;
-  line-height: 40px;
-  letter-spacing: 0.07px;
+  padding-right: 15px;
 }
 
 .client-card .table tbody td,
@@ -133,7 +129,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 1024px) and (max-width: 1300px) {
+@media (min-width: 500px) and (max-width: 1300px) {
   .client-card .top .top-left {
     margin-left: 23px;
     gap: 8px;

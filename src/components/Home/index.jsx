@@ -12,6 +12,7 @@ import './style.css';
 function Home() {
   const { chargesSummary } = useDashboard();
 
+
   return (
     <div className='HomeComponent'>
       <div className='cards-wrapper fade-in'>
@@ -36,13 +37,14 @@ function Home() {
         />
       </div>
 
-      <div className='cards-wrapper fade-in'>
+      <div className='cards-wrapper wrapper-charges-cards fade-in'>
         <ChargesCard
           backgroundColor={'var(--low-opacity-red-n1)'}
           textColor={'var(--red-n1)'}
           title={'Cobranças Vencidas'}
           total={chargesSummary.amountChargesPerStatus?.amountOverdueCharges}
           body={chargesSummary.clients?.clientsOverdueCharges}
+          up_to_date='Vencida'
         />
         <ChargesCard
           backgroundColor={'var(--low-opacity-yellow-n1)'}
@@ -50,6 +52,7 @@ function Home() {
           title={'Cobranças Previstas'}
           total={chargesSummary.amountChargesPerStatus?.amountExpectedCharges}
           body={chargesSummary.clients?.clientsExpectedCharges}
+          up_to_date='Pendente'
         />
         <ChargesCard
           backgroundColor={'var(--low-opacity-blue-n1)'}
@@ -57,10 +60,11 @@ function Home() {
           title={'Cobranças Pagas'}
           total={chargesSummary.amountChargesPerStatus?.amountPaidCharges}
           body={chargesSummary.clients?.clientsPaidcharges}
+          up_to_date='Paga'
         />
       </div>
 
-      <div className='cards-wrapper fade-in'>
+      <div className='cards-wrapper wrapper-clients-cards fade-in'>
         <ClientsCard
           icon={DebtorClient}
           title={'Clientes Inadimplentes'}
@@ -68,6 +72,7 @@ function Home() {
           backgroundColor={'var(--low-opacity-red-n1)'}
           total={chargesSummary.upToDateAndDefaulterclients?.numberDefaulterClients}
           body={chargesSummary.upToDateAndDefaulterclients?.defaulterClients}
+          up_to_date={false}
         />
         <ClientsCard
           icon={OkClient}
@@ -76,6 +81,7 @@ function Home() {
           backgroundColor={'var(--low-opacity-blue-n1)'}
           total={chargesSummary.upToDateAndDefaulterclients?.numberUpToDateClients}
           body={chargesSummary.upToDateAndDefaulterclients?.upToDateClients}
+          up_to_date={true}
         />
       </div>
     </div>

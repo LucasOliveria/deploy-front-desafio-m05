@@ -1,3 +1,16 @@
+.ChargesTableRow {
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.ChargesTableRow:hover {
+  background-color: var(--gray-n7);
+}
+
+.ChargesTableRow td:first-child {
+  padding-left: 8px;
+}
+
 .ChargesTableRow .charge-status img {
   vertical-align: middle;
 }
@@ -12,11 +25,8 @@
 
 .ChargesTableRow .description .description-text {
   flex-grow: 1;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  width: 120px;
   align-self: center;
-  width: 160px;
 }
 
 .ChargesTableRow .icon-div {
@@ -35,11 +45,17 @@
   color: var(--gray-n3);
 }
 
+.ChargesTableRow .icon-div .icon-img {
+  height: 16px;
+  width: 16px;
+}
+
 .ChargesTableRow .icon-div .icon-text.delete {
   color: var(--red-n3);
 }
 
-.ChargesTableRow .icon-div .icon-img {
-  height: 16px;
-  width: 16px;
+.ChargesTableRow .icon-div:hover .icon-img,
+.ChargesTableRow .icon-div:hover .icon-text {
+  transform: scale(1.18);
+  transition: all 0.2s;
 }

@@ -1,18 +1,33 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Header from '../../components/Header';
+import ChargeDetailModal from '../../components/ChargeDetailModal';
+import ClientsEditModal from '../../components/ClientsEditModal';
 import EditUser from '../../components/EditUser';
+import Header from '../../components/Header';
+import ModalDeleteCharge from '../../components/ModalDeleteCharge';
+import NewChargeModal from '../../components/NewChargeModal';
 import Sidebar from '../../components/Sidebar';
 import useDashboard from '../../hooks/useDashboard';
 import api from '../../services/api';
 import { headers } from '../../utils/headers';
 import { clearStorage } from '../../utils/storage';
 import './style.css';
-import NewChargeModal from '../../components/NewChargeModal';
 
 function Dashboard({ children }) {
-  const { setUser, setClients, openEditUser, setChargesSummary, setCharges, openNewChargeModal, homeModifier } = useDashboard();
+  const { 
+    setUser, 
+    setClients, 
+    openEditUser, 
+    setChargesSummary, 
+    setCharges, 
+    openNewChargeModal, 
+    homeModifier, 
+    openDeleteCharge, 
+    showChargeDetailModal,
+    clientsModifier,
+    showModalEditClient
+  } = useDashboard();
 
   const navigateTo = useNavigate();
 
@@ -48,7 +63,6 @@ function Dashboard({ children }) {
         headers: headers()
       });
       setCharges(data);
-      setFilteredClients(filtered);
     } catch (error) {
 
     }
@@ -68,9 +82,12 @@ function Dashboard({ children }) {
 
   useEffect(() => {
     getUser()
-    getClients();
     getCharges();
   }, []);
+
+  useEffect(() => {
+    getClients();
+  }, [clientsModifier]);
 
   useEffect(() => {
     getChargesSummary();
@@ -87,6 +104,9 @@ function Dashboard({ children }) {
       </main>
       {openEditUser && <EditUser />}
       {openNewChargeModal && <NewChargeModal />}
+      {openDeleteCharge && <ModalDeleteCharge />}
+      {showChargeDetailModal && <ChargeDetailModal />}
+      {showModalEditClient && <ClientsEditModal />}
     </div>
   )
 }

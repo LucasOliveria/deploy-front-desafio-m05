@@ -1,8 +1,21 @@
+import { useNavigate } from 'react-router-dom';
 import { formatTotalNumber } from '../../helpers/formatter';
+import useDashboard from '../../hooks/useDashboard';
 import TableRow from '../TableRow';
 import './style.css';
 
-function ChargesCard({ title, total, textColor, backgroundColor, body }) {
+function ChargesCard({ title, total, textColor, backgroundColor, body, up_to_date }) {
+  const navigate = useNavigate();
+
+  const { charges, setFilteredCharges, setFilterHomeCharges } = useDashboard();
+
+  function handleWatch() {
+    const localCharges = [...charges]
+    const filteredCharges = localCharges.filter(charge => charge.up_to_date === up_to_date);
+    setFilteredCharges(filteredCharges);
+    setFilterHomeCharges(true);
+    navigate('/dashboard/cobrancas')
+  }
 
   return (
     <div className='chargesCard'>
@@ -28,7 +41,7 @@ function ChargesCard({ title, total, textColor, backgroundColor, body }) {
           </thead>
           <tbody>
             {body?.length ? body?.length && body?.slice(0, 4).map((client) => (
-              <TableRow key={client.id} name={client.client_name} idCharge={client.id} value={client.value} />
+              <TableRow key={client.id} name={client.client_name} id={client.id} value={client.value} />
             ))
               :
               <tr>
@@ -41,7 +54,7 @@ function ChargesCard({ title, total, textColor, backgroundColor, body }) {
         </table>
       </div>
       <div className='bottom'>
-        <h3>Ver todos</h3>
+        <h3 onClick={handleWatch}>Ver todos</h3>
       </div>
     </div >
   )

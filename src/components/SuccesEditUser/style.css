@@ -23,8 +23,7 @@
     color: var(--cinzas-cinza-1, #343447);
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    font-style: normal;
+    font-size: 2.4rem;
     font-weight: 700;
     line-height: 130%;
 }

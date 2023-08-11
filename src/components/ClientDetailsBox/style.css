@@ -30,6 +30,11 @@
   color: var(--gray-n2);
 }
 
+.email-client-details {
+  word-break: break-all;
+  max-width: 300px;
+}
+
 .title-client-details button {
   display: flex;
   justify-content: center;
@@ -37,8 +42,8 @@
   width: 251px;
   height: 35px;
   border-radius: 10px;
-  border: 1px solid var(--next-step);
-  color: var(--green-steps);
+  border: 1px solid var(--grey-n8);
+  color: var(--green-n1);
   background-color: var(--light-gray-bg-color);
   cursor: pointer;
 }

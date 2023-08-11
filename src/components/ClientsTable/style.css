@@ -82,7 +82,6 @@
   color: var(--gray-n3);
 }
 
-img[alt="filter icon"],
 .add-client-button,
 img[alt="change order"] {
   cursor: pointer;
@@ -98,10 +97,10 @@ img[alt="search icon"] {
   min-width: 345px;
   background-color: var(--white);
   border-radius: 30px;
-  margin-top: 24px;
+  margin: 24px 0 35px 0;
   padding: 0 23px 12px 23px;
   overflow-x: auto;
-  max-height: 400px;
+  max-height: 480px;
 }
 
 .clients-table {
@@ -118,6 +117,8 @@ img[alt="search icon"] {
   background-color: var(--white);
   position: sticky;
   top: 0;
+  border-bottom: 1px solid #EFF0F6;
+  ;
 }
 
 .clients-table thead tr th img {
@@ -155,4 +156,15 @@ img[alt="search icon"] {
 .rotate-reverse {
   transform: rotate(180deg);
   transition: all 0.5s;
+}
+
+.not-results {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.not-results img {
+  width: 444px;
+  height: 300px;
 }

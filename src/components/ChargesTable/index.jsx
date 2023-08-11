@@ -2,31 +2,133 @@ import { useEffect, useState } from 'react';
 import chargeIconTable from "../../assets/blank-charge.svg";
 import changeOrder from "../../assets/change-order.svg";
 import filterIcon from "../../assets/filter-icon.svg";
+import notResults from '../../assets/notResults.png';
 import searchIcon from "../../assets/search-icon.svg";
 import useDashboard from '../../hooks/useDashboard';
 import ChargesTableRow from '../ChargesTableRow';
 import './style.css';
 
 function ChargesTable() {
-  const { charges } = useDashboard();
+  const [rotateClient, setRotateClient] = useState(false);
 
-  const [search, setSearch] = useState('');
+  const [rotateID, setRotateID] = useState(false);
 
-  const [filteredCharges, setFilteredCharges] = useState([]);
+  const { charges, setCharges, searchCharges, setSearchCharges, sortOrder, setSortOrder, filteredCharges, setFilteredCharges, filterHomeCharges, setFilterHomeCharges } = useDashboard();
+
+  const [ copyCharges, setCopyCharges] = useState([...charges]);
+
+  const [ copyFilteredCharges, setCopyFilteredCharges] = useState([...filteredCharges]);
+
+  const filtered = searchCharges ? copyCharges.filter((charge) => {
+    return charge.client_name.toLowerCase().startsWith(searchCharges.toLowerCase()) || charge.id.toString().startsWith(searchCharges)
+  }) : charges;
+
+  const filteredByFilteredCharges = searchCharges ? copyFilteredCharges.filter((charge) => {
+    return charge.client_name.toLowerCase().startsWith(searchCharges.toLowerCase()) || charge.id.toString().startsWith(searchCharges)
+  }) : filteredCharges
+
+  useEffect(() => {
+    return () => {
+      setFilterHomeCharges(false);
+      setSearchCharges('');
+    }
+  }, []);
+
+  function handleAlphabeticalOrderClient() {
+    setRotateClient(!rotateClient);
+    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortOrder(newSortOrder);
+
+    const sortedCharges = [...filtered];
+    const sortedChargesFiltered = [...filteredByFilteredCharges]
+
+    if (!filterHomeCharges) {
+      sortedCharges.sort((a, b) => {
+        const nomeA = a.client_name.toUpperCase();
+        const nomeB = b.client_name.toUpperCase();
+
+        if (newSortOrder === 'asc') {
+          return nomeA.localeCompare(nomeB);
+        } else {
+          return nomeB.localeCompare(nomeA);
+        }
+      });
+
+      if (searchCharges) {
+        return setCopyCharges(sortedCharges);
+      }
+
+      setCharges(sortedCharges);
+    } else {
+      sortedChargesFiltered.sort((a, b) => {
+        const nomeA = a.client_name.toUpperCase();
+        const nomeB = b.client_name.toUpperCase();
+
+        if (newSortOrder === 'asc') {
+          return nomeA.localeCompare(nomeB);
+        } else {
+          return nomeB.localeCompare(nomeA);
+        }
+      });
+
+      if (searchCharges) {
+        return setCopyFilteredCharges(sortedChargesFiltered);
+      }
+
+      setFilteredCharges(sortedChargesFiltered);
+    }
+
+  }
+
+  function handleAlphabeticalOrderID() {
+    setRotateID(!rotateID);
+    const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+    setSortOrder(newSortOrder);
+
+    const sortedCharges = [...filtered];
+    const sortedChargesFiltered = [...filteredByFilteredCharges]
+
+    if (!filterHomeCharges) {
+      sortedCharges.sort((a, b) => {
+        if (newSortOrder === 'asc') {
+          return a.id - b.id;
+        } else {
+          return b.id - a.id;
+        }
+      });
+
+      if (searchCharges) {
+        return setCopyCharges(sortedCharges)
+      }
+
+      setCharges(sortedCharges);
+    } else {
+      sortedChargesFiltered.sort((a, b) => {
+        if (newSortOrder === 'asc') {
+          return a.id - b.id;
+        } else {
+          return b.id - a.id;
+        }
+      });
+
+      if (searchCharges) {
+        return setCopyFilteredCharges(sortedChargesFiltered);
+      }
+
+      setFilteredCharges(sortedChargesFiltered);
+    }
+
+  }
 
   function handleSearch(event) {
     const searchCharacter = event.target.value;
+    setSearchCharges(searchCharacter);
 
-    setSearch(searchCharacter);
+    if (!searchCharges) {
+      setCopyCharges([...charges]);
+      setCopyFilteredCharges([...filteredCharges]);
+    }
   }
-
-  useEffect(() => {
-    const filtered = charges.filter((charge) => {
-      return charge.client_name.toLowerCase().startsWith(search.toLowerCase())
-    });
-
-    setFilteredCharges(filtered);
-  }, [search, charges]);
 
   return (
     <div className="charges-container-table">
@@ -40,11 +142,11 @@ function ChargesTable() {
           <div className="charges-search-input">
             <input
               type="text"
-              name="search"
+              name="searchCharges"
               id=""
               placeholder='Pesquisa'
               onChange={handleSearch}
-              value={search}
+              value={searchCharges}
             />
             <img src={searchIcon} alt="search icon" />
           </div>
@@ -59,6 +161,8 @@ function ChargesTable() {
                 <img
                   src={changeOrder}
                   alt="change order"
+                  onClick={handleAlphabeticalOrderClient}
+                  className={`${rotateClient ? 'rotate' : 'rotate-reverse'}`}
                 />
                 <span>Cliente</span>
               </th>
@@ -66,6 +170,8 @@ function ChargesTable() {
                 <img
                   src={changeOrder}
                   alt="change order"
+                  onClick={handleAlphabeticalOrderID}
+                  className={`${rotateID ? 'rotate' : 'rotate-reverse'}`}
                 />
                 <span>ID Cob.</span>
               </th>
@@ -78,16 +184,23 @@ function ChargesTable() {
             </tr>
           </thead>
           <tbody>
-            {!!filteredCharges.length &&
-              filteredCharges.map((charge) => (
-                <ChargesTableRow
-                  key={charge.id}
-                  charge={charge}
-                />
+            {!filterHomeCharges
+              ?
+              !!filtered.length &&
+              filtered.map((charge) => (
+                <ChargesTableRow key={charge.id} charge={charge} />
+              ))
+              :
+              filteredByFilteredCharges.map((charge) => (
+                <ChargesTableRow key={charge.id} charge={charge} />
               ))
             }
           </tbody>
         </table>
+        {!filtered.length &&
+          <div className='not-results'>
+            <img src={notResults} alt="not results" />
+          </div>}
       </div>
     </div>
   )

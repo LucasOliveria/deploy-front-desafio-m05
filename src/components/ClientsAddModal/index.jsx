@@ -14,7 +14,7 @@ function ClientsAddModal({ onClose }) {
   const [errorEmail, setErrorEmail] = useState('');
   const [errorCpf, setErrorCpf] = useState('');
   const [errorPhone, setErrorPhone] = useState('');
-  const { clients, setClients, setHomeModifier } = useDashboard();
+  const { clients, setClients, setHomeModifier, filteredClients, setFilteredClients } = useDashboard();
 
   const [form, setForm] = useState({
     name: '',
@@ -129,9 +129,8 @@ function ClientsAddModal({ onClose }) {
       });
 
       setClients([...clients, response.data]);
-
+      setFilteredClients([...filteredClients, response.data]);
       setHomeModifier(response.data);
-
       handleBtnCancel();
 
       toast.update(id, { render: "Cadastro concluído com sucesso", type: "success", isLoading: false, autoClose: 1500, position: "bottom-right", icon: ({ theme, type }) => <img src={successIcon} /> });

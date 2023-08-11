@@ -63,15 +63,16 @@
   min-width: 900px;
   text-align: justify;
   border-collapse: collapse;
+  position: relative;
+
 }
 
 .table-client-charges thead {
-  background-color: var(--white);
-}
-
-.table-client-charges thead tr th {
   height: 66px;
   font-size: 1.6rem;
+  background-color: var(--white);
+  position: sticky;
+  top: 0;
 }
 
 .table-client-charges thead tr th img {
@@ -106,4 +107,15 @@
 
 .edit-or-delete .red-delete {
   color: var(--red-n3);
+}
+
+.rotate {
+  transform: rotate(0deg);
+  transition: all 0.5s;
+
+}
+
+.rotate-reverse {
+  transform: rotate(180deg);
+  transition: all 0.5s;
 }

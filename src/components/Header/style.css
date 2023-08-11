@@ -41,13 +41,13 @@
 
 .Header .header-secondary-title {
   line-height: 2.4rem;
-  color: var(--green-steps);
+  color: var(--green-n1);
 }
 
 .Header .header-user-menu {
   display: flex;
   gap: 8px;
-  color: var(--green-steps);
+  color: var(--green-n1);
   height: fit-content;
   align-items: center;
 
@@ -66,7 +66,7 @@
   justify-content: center;
   text-align: center;
   border-radius: 50%;
-  background-color: var(--next-step);
+  background-color: var(--grey-n8);
 }
 
 .Header .header-user-menu .user-name {

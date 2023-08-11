@@ -1,21 +1,17 @@
-import { useState } from 'react';
 import editIconSmall from "../../assets/edit-icon-small.svg";
 import { formatCpfNumber, formatPhoneNumber } from "../../helpers/formatter";
 import useDashboard from "../../hooks/useDashboard";
-import ClientsEditModal from "../ClientsEditModal";
 import './style.css';
 
 
 function ClientDetailsBox() {
-  const [showModal, setShowModal] = useState(false);
-
-  const { clientDetails } = useDashboard();
+  const { clientDetails, setShowModalEditClient } = useDashboard();
 
   return (
     <div className="content-client-details fade-in">
       <div className='title-client-details'>
         <h3>Dados do cliente</h3>
-        <button onClick={() => setShowModal(true)}>
+        <button onClick={() => setShowModalEditClient(true)}>
           <img src={editIconSmall} alt="edit icon" />
           Editar Cliente
         </button>
@@ -24,7 +20,7 @@ function ClientDetailsBox() {
       <div className="info-field-one">
         <div className='info'>
           <h4>E-mail</h4>
-          <p>{clientDetails.client?.email}</p>
+          <p className='email-client-details'>{clientDetails.client?.email}</p>
         </div>
 
         <div className='info'>
@@ -70,7 +66,7 @@ function ClientDetailsBox() {
           <p>{clientDetails.client?.uf}</p>
         </div>
       </div>
-      {showModal && <ClientsEditModal onClose={() => setShowModal(false)} />}
+
     </div>
   )
 }

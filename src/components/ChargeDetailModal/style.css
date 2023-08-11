@@ -1,0 +1,82 @@
+.charge-detail-modal-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 108px;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--modal-background-color);
+  backdrop-filter: blur(2px);
+  overflow-y: auto;
+}
+
+.charge-detail-modal-container {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  padding: 15px 35px;
+  border-radius: 30px;
+  position: relative;
+  padding: 40px 16px 40px 40px;
+}
+
+.charge-detail-modal-container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-modal {
+  display: flex;
+  gap: 16px;
+}
+
+.charge-detail-modal-container header h1 {
+  font-family: Montserrat;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 34px;
+  text-align: left;
+  color: var(--gray-n2);
+}
+
+.charge-detail-modal-container header img[alt="Botão de Fechar Modal"] {
+  position: relative;
+  right: 24px;
+  top: -16px;
+  cursor: pointer;
+}
+
+.charge-detail-modal-option,
+.charge-detail-modal-value {
+  font-family: Nunito;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  color: var(--gray-n2);
+}
+
+.charge-detail-modal-option {
+  margin: 24px 0 8px;
+  font-weight: 700;
+}
+
+.charge-detail-modal-value {
+  font-weight: 400;
+}
+
+.charge-detail-modal-row {
+  display: flex;
+}
+
+.charge-detail-modal-row div {
+  width: 50%;
+}
+
+.box-detail-value {
+  max-height: 78px;
+  overflow-y: auto;
+}

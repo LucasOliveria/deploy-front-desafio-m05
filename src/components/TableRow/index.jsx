@@ -1,12 +1,12 @@
 import { formatCurrency } from '../../helpers/formatter';
 import './style.css';
 
-function TableRow({ name, idCharge, value }) {
+function TableRow({ name, id, value }) {
   return (
     <tr>
-      <td>{name}</td>
-      <td>{idCharge}</td>
-      <td>{formatCurrency(value)}</td>
+      <td className='td-name'>{name}</td>
+      <td>{id}</td>
+      <td className='td-value'>{formatCurrency(value)}</td>
     </tr>
 
   )
