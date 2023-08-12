@@ -68,7 +68,6 @@ function ModalDeleteCharge() {
   
       setOpenDeleteCharge(false);
     } catch (error) {
-      console.log(error);
       toast.update(id, { render: error.response.data, type: "error", isLoading: false, autoClose: 1500, position: "bottom-right", icon: ({ theme, type }) => <img src={failureIcon} /> });
 
       setOpenDeleteCharge(false);
