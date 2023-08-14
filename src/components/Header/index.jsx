@@ -11,7 +11,7 @@ function Header() {
 
   const { pathname } = useLocation();
 
-  const idParams = useParams()
+  const idParams = useParams();
 
   const [openModal, setOpenModal] = useState(false);
 

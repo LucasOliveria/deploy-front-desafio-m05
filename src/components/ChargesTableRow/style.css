@@ -1,6 +1,12 @@
-.ChargesTableRow {
-  transition: all 0.2s;
+.ChargesTableRow,
+.ChargesTableRow .icon-div {
   cursor: pointer;
+}
+
+.ChargesTableRow,
+.ChargesTableRow .icon-div .icon-img,
+.ChargesTableRow .icon-div .icon-text {
+  transition: all 0.2s;
 }
 
 .ChargesTableRow:hover {
@@ -35,7 +41,6 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  cursor: pointer;
   height: 60px;
   padding-right: 15px;
   font-family: Nunito;
@@ -56,6 +61,5 @@
 
 .ChargesTableRow .icon-div:hover .icon-img,
 .ChargesTableRow .icon-div:hover .icon-text {
-  transform: scale(1.18);
-  transition: all 0.2s;
+  transform: scale(1.2);
 }

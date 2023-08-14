@@ -15,15 +15,15 @@ import { clearStorage } from '../../utils/storage';
 import './style.css';
 
 function Dashboard({ children }) {
-  const { 
-    setUser, 
-    setClients, 
-    openEditUser, 
-    setChargesSummary, 
-    setCharges, 
-    openNewChargeModal, 
-    homeModifier, 
-    openDeleteCharge, 
+  const {
+    setUser,
+    setClients,
+    openEditUser,
+    setChargesSummary,
+    setCharges,
+    openNewChargeModal,
+    homeModifier,
+    openDeleteCharge,
     showChargeDetailModal,
     clientsModifier,
     showModalEditClient

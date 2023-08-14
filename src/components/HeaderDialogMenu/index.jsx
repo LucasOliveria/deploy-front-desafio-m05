@@ -21,8 +21,8 @@ function HeaderDialogMenu({ modalRef }) {
     setFormData({
       ...user,
       password: '',
-      cpf: '',
-      phone: '',
+      cpf: user.cpf ?? "",
+      phone: user.phone ?? '',
       confirmNewPassword: '',
     })
   }

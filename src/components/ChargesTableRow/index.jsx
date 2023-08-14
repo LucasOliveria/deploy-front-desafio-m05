@@ -13,7 +13,7 @@ function ChargesTableRow({ charge, renderClientName = true }) {
   const { id, client_name, description, due_date, up_to_date, value } = charge;
   const { handleNewChargeModalOpen, setEditingCharge, setOpenDeleteCharge, setChargeToDelete, setShowChargeDetailModal } = useDashboard()
 
-  const formattedDate = formatDate(due_date, 'dd/MM/yyyy')
+  const formattedDate = formatDate(due_date, 'dd/MM/yyyy');
 
   const { setChargeDetails } = useDashboard();
 

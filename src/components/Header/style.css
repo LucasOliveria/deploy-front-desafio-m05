@@ -13,6 +13,7 @@
 }
 
 .Header .header-primary-title {
+  margin-bottom: 24px;
   font-size: 2.6rem;
   line-height: 34px;
   text-align: center;
@@ -60,7 +61,7 @@
 .Header .header-user-menu .avatar {
   height: 48px;
   width: 48px;
-  font-size: 22px;
+  font-size: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,4 +84,26 @@
 
 .Header .header-user-menu .menu-button .menu-button {
   margin-top: 8px;
+}
+
+@media (min-width: 500px) and (max-width: 1200px) {
+  .Header {
+    margin: 0px 20px 19px 20px;
+    padding: 0 20px 0 20px;
+  }
+
+  .Header .header-primary-title {
+    font-size: 1.8rem;
+    line-height: 22px;
+  }
+
+  .Header .header-user-menu {
+    font-size: 1.5rem;
+  }
+
+  .Header .header-user-menu .avatar {
+    height: 38px;
+    width: 38px;
+    font-size: 1.8rem;
+  }
 }

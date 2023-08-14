@@ -18,13 +18,14 @@ function ClientsTableRow({ client }) {
     navigate(`/dashboard/clientes/${id}`);
   }
 
-  const handleModalOpen = () => {
+  const handleModalOpen = (event) => {
+    event.stopPropagation();
     handleNewChargeModalOpen(client);
   }
 
   return (
-    <tr>
-      <td className='clickable td-name' onClick={handleClientDetails}>{name}</td>
+    <tr onClick={handleClientDetails}>
+      <td className='clickable td-name' >{name}</td>
       <td>{formatCpfNumber(cpf)}</td>
       <td className='td-email'>{email}</td>
       <td>{formatPhoneNumber(phone)}</td>
