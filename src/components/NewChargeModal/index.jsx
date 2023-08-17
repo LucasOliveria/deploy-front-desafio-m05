@@ -5,7 +5,7 @@ import BlankChargeIcon from '../../assets/blank-charge.svg';
 import CheckedIcon from '../../assets/checked-icon.svg';
 import CloseIcon from "../../assets/icon-close.svg";
 import SuccessIcon from "../../assets/iconsucces.svg";
-import { formatCurrencyInput, formatCurrencyToCents } from '../../helpers/formatter';
+import { formatCurrencyInput, formatCurrencyToCents, formatDate } from '../../helpers/formatter';
 import useDashboard from '../../hooks/useDashboard';
 import api from '../../services/api';
 import { headers } from '../../utils/headers';
@@ -32,7 +32,7 @@ function NewChargeModal() {
   const opennedLocation = useRef(location.pathname)
 
   const [description, setDescription] = useState(incomeCharge.description);
-  const [dueDate, setDueDate] = useState(incomeCharge.due_date ? incomeCharge.due_date.slice(0, 10) : '');
+  const [dueDate, setDueDate] = useState(incomeCharge.due_date ? formatDate(incomeCharge.due_date, "yyyy-MM-dd") : '');
   const [value, setValue] = useState(incomeCharge.value ? formatCurrencyInput(`R$ ${incomeCharge.value / 100}`, '') : 'R$ ');
   const [status, setStatus] = useState(incomeCharge.status);
 
@@ -205,7 +205,7 @@ function NewChargeModal() {
 
   function clearForm() {
     setDescription(incomeCharge.description)
-    setDueDate(incomeCharge.due_date ? incomeCharge.due_date.slice(0, 10) : '')
+    setDueDate(incomeCharge.due_date ? formatDate(incomeCharge.due_date, "yyyy-MM-dd") : '')
     setValue(incomeCharge.value ? formatCurrencyInput(`R$ ${incomeCharge.value / 100}`, '') : 'R$ ')
     setStatus(incomeCharge.status)
     hasErrors.current = false

@@ -3,7 +3,7 @@ import iconClose from '../../assets/icon-close.svg';
 import defeatedIcon from "../../assets/statusCharge/expired.svg";
 import payIcon from "../../assets/statusCharge/paid.svg";
 import pendingIcon from "../../assets/statusCharge/pending.svg";
-import { formatCurrency } from '../../helpers/formatter';
+import { formatCurrency, formatDate } from '../../helpers/formatter';
 import useDashboard from '../../hooks/useDashboard';
 import './style.css';
 
@@ -16,6 +16,8 @@ export default function ChargeDetailModal() {
   }
 
   const { client_name, description, due_date, value, id, up_to_date } = chargeDetails;
+
+  const dateFormated = formatDate(due_date, 'dd/MM/yyyy')
 
   return (
     <div className="charge-detail-modal-background">
@@ -38,7 +40,7 @@ export default function ChargeDetailModal() {
         <div className="charge-detail-modal-row">
           <div>
             <p className="charge-detail-modal-option">Vencimento</p>
-            <p className="charge-detail-modal-value">{due_date.slice(0, 10).split("-").reverse().join("/")}</p>
+            <p className="charge-detail-modal-value">{dateFormated}</p>
           </div>
           <div>
             <p className="charge-detail-modal-option">Valor</p>
