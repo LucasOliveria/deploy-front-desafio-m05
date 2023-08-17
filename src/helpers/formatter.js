@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
 
 export function formatCurrency(value) {
   if (isNaN(+value)) return value
@@ -73,9 +72,9 @@ export function formatTotalNumber(total) {
 }
 
 export function formatDate(date, pattern) {
-  const brasilTimeZone = 'America/Sao_Paulo';
-  const dateUtc = new Date(date);
-  const dateBrasil = utcToZonedTime(dateUtc, brasilTimeZone);
-  const formattedDate = format(dateBrasil, pattern, { timeZone: brasilTimeZone });
+  const [year, month, day] = date.split('-')
+  const cleanDay = day.slice(0, 2)
+  const cleanMonth = Number(month) - 1
+  const formattedDate = format(new Date(year, cleanMonth, cleanDay), pattern);
   return formattedDate
 }
