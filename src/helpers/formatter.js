@@ -72,6 +72,11 @@ export function formatTotalNumber(total) {
 }
 
 export function formatDate(date, pattern) {
+  const formattedDate = format(new Date(date), pattern);
+  return formattedDate
+}
+
+export function formatDateRow(date, pattern) {
   const [year, month, day] = date.split('-')
   const cleanDay = day.slice(0, 2)
   const cleanMonth = Number(month) - 1
