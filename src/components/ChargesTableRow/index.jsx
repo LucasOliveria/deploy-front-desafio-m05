@@ -3,7 +3,7 @@ import payIcon from "../../assets/statusCharge/paid.svg";
 import pendingIcon from "../../assets/statusCharge/pending.svg";
 import editIcon from "../../assets/tableCharge/btn-edit.svg";
 import trashIcon from "../../assets/tableCharge/btn-excluir.svg";
-import { formatCurrency, formatDate } from '../../helpers/formatter';
+import { formatCurrency } from '../../helpers/formatter';
 import useDashboard from '../../hooks/useDashboard';
 import './style.css';
 
@@ -11,9 +11,7 @@ import './style.css';
 function ChargesTableRow({ charge, renderClientName = true }) {
 
   const { id, client_name, description, due_date, up_to_date, value } = charge;
-  const { handleNewChargeModalOpen, setEditingCharge, setOpenDeleteCharge, setChargeToDelete, setShowChargeDetailModal } = useDashboard()
-
-  const formattedDate = formatDate(due_date, 'dd/MM/yyyy');
+  const { handleNewChargeModalOpen, setEditingCharge, setOpenDeleteCharge, setChargeToDelete, setShowChargeDetailModal } = useDashboard();
 
   const { setChargeDetails } = useDashboard();
 
@@ -41,7 +39,7 @@ function ChargesTableRow({ charge, renderClientName = true }) {
       {renderClientName && <td className='client-name td-name'>{client_name}</td>}
       <td>{id}</td>
       <td className="td-value">{formatCurrency(value)}</td>
-      <td>{formattedDate}</td>
+      <td>{due_date.slice(0, 10).split("-").reverse().join("/")}</td>
       <td className="charge-status">
         <img src={up_to_date === 'Paga' ? payIcon : up_to_date === 'Vencida' ? defeatedIcon : pendingIcon} alt="status da cobrança" />
       </td>
