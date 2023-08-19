@@ -9,13 +9,13 @@ import { headers } from "../../utils/headers";
 import './style.css';
 
 function ModalDeleteCharge() {
-  const { 
-    setOpenDeleteCharge, 
-    chargeToDelete, 
-    charges, 
-    setCharges, 
-    setHomeModifier, 
-    clientDetails, 
+  const {
+    setOpenDeleteCharge,
+    chargeToDelete,
+    charges,
+    setCharges,
+    setHomeModifier,
+    clientDetails,
     setClientDetails,
     filteredCharges,
     setFilteredCharges,
@@ -50,22 +50,22 @@ function ModalDeleteCharge() {
         const localChargesClientDetails = [...clientDetails.charges];
         const deletedChargeClientDetailsIndex = localChargesClientDetails.findIndex((charge) => charge.id === chargeToDelete.id);
         localChargesClientDetails.splice(deletedChargeClientDetailsIndex, 1);
-  
-        setClientDetails({ ...clientDetails, charges: [ ...localChargesClientDetails ] });
+
+        setClientDetails({ ...clientDetails, charges: [...localChargesClientDetails] });
       }
 
       const localFilteredCharges = [...filteredCharges];
       const deletedFilteredChargeIndex = localFilteredCharges.findIndex((charge) => charge.id === chargeToDelete.id);
       localFilteredCharges.splice(deletedFilteredChargeIndex, 1);
-      
+
       setFilteredCharges(localFilteredCharges);
 
       setSearchCharges('');
 
-      setHomeModifier(clientDetails);
+      setHomeModifier({ allLocalCharges: [...allLocalCharges] });
 
       toast.update(id, { render: "Cobrança excluída com sucesso!", type: "success", isLoading: false, autoClose: 1500, position: "bottom-right", icon: ({ theme, type }) => <img src={successIcon} /> });
-  
+
       setOpenDeleteCharge(false);
     } catch (error) {
       toast.update(id, { render: error.response.data, type: "error", isLoading: false, autoClose: 1500, position: "bottom-right", icon: ({ theme, type }) => <img src={failureIcon} /> });
